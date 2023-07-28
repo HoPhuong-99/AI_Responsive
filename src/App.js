@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      xin chao
+      xin chao Ho Phuong
     </div>
   );
 }
