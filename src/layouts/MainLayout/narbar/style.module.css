@@ -1,0 +1,29 @@
+.container_narbar {
+    display: flex;
+    height: 7vh;
+    width: 100%;
+    background-color: red;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+}
+
+
+.logo_narbar{
+    
+}
+
+.contents_narbar{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.element_narbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
