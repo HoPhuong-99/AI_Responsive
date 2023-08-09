@@ -11,7 +11,9 @@
 
 
 .logo_narbar{
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .contents_narbar{
@@ -25,5 +27,12 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    position: relative;
+    cursor: pointer;
+    z-index: 0;
 }
 
+.menu_options{
+    position: absolute;
+    z-index: 1;
+}

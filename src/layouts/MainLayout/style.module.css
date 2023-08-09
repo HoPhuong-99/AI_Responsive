@@ -1,0 +1,8 @@
+.container_mainLayout{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+}
+
