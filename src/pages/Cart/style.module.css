@@ -1,0 +1,15 @@
+.container_pay {
+    margin: auto;
+    max-width: 620px;
+}
+
+.wrap_btn {
+    padding: 16px 0;
+}
+
+.wrap_pay {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 6px;
+
+}

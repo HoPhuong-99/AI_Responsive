@@ -21,7 +21,7 @@ const Produce = () => {
   ];
   return (
     <div className={style.wrap_produce}>
-      {datafake?.map((e) => (
+      {/* {datafake?.map((e) => (
         <div className={style.items_produce}>
           <div className={style.produce_img}>
             <Image src={e?.img} alt="" />
@@ -35,7 +35,7 @@ const Produce = () => {
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

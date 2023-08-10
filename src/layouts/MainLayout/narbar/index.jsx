@@ -209,7 +209,7 @@ const Narbar = () => {
                     </NavLink>
                   </Col>
                   <Col span={3}>
-                    <NavLink className={style.element_narbar}>
+                    <NavLink className={style.element_narbar} to="/cart">
                       <Badge count={1}>
                         <Avatar
                           src={shopping_cart}

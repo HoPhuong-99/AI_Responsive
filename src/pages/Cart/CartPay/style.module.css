@@ -1,0 +1,103 @@
+.hero_pay {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap_cartpay {
+    padding: 20px 0 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border-bottom: 1px solid #ccc;
+}
+
+.img_pay {
+    display: flex;
+    flex-direction: column;
+}
+
+.img_item {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ECECEC;
+}
+
+.price_cart {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: flex-end;
+}
+
+.btn_qualyti {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.name_cart {
+    padding-left: 10px;
+}
+
+.title_cart {
+    margin: 0;
+}
+
+.delete_pay_item {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.price_new {
+    display: block;
+    font-weight: 600;
+    font-size: 18px;
+    color: red;
+}
+
+.price_old {
+    font-size: 14px;
+    color: #6D6E72;
+    display: block;
+    text-decoration: line-through;
+}
+
+.input_qualyty {
+    width: 25%;
+    border-radius: unset;
+}
+
+.discount {
+    display: flex;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #ccc;
+    flex-direction: column;
+}
+
+.icont_discount {
+    width: 15px;
+    height: 12px;
+}
+
+.btn_discount {
+    width: 40%;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input_voucher {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background: #ECECEC;
+    border-radius: 4px;
+}
+
+.input_items {
+    margin-right: 10px;
+}
