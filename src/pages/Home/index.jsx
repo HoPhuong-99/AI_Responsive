@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { APIService } from "../../services/apiService";
 
 import Produce from "./Produce";
+import CustomerService from "./CustomerService/CustomerService";
 
 const HomePage = () => {
   const [listData, setListData] = useState();
@@ -20,6 +21,7 @@ const HomePage = () => {
   return (
     <div>
       <Produce />
+      <CustomerService />
     </div>
   );
 };
