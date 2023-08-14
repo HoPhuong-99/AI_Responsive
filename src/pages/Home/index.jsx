@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { APIService } from "../../services/apiService";
 
-import Produce from "./Produce";
+import Produce from "./Product";
 
 const HomePage = () => {
   const [listData, setListData] = useState();
