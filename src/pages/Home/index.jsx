@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { APIService } from "../../services/apiService";
 
+import CustomerService from "./CustomerService/CustomerService";
 import Produce from "./Product";
 
 const HomePage = () => {
@@ -20,6 +21,7 @@ const HomePage = () => {
   return (
     <div>
       <Produce />
+      <CustomerService />
     </div>
   );
 };
