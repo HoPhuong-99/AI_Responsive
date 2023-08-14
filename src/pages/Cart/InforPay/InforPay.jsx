@@ -1,7 +1,7 @@
 import React from "react";
 
-function InforPay() {
+const InforPay = () => {
   return <div>InforPay</div>;
-}
+};
 
 export default InforPay;

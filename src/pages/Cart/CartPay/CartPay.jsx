@@ -11,6 +11,7 @@ import lap1 from "../../../assests/produce/may1.jpg";
 
 const Cartpay = () => {
   const [upDown, setUpDown] = useState(false);
+  const [count, setCount] = useState(0);
   return (
     <div className={style.hero_pay}>
       <div className={style.wrap_cartpay}>
@@ -18,7 +19,7 @@ const Cartpay = () => {
           <img className={style.img_item} src={lap1} alt="" />
           <div className={style.delete_pay_item}>
             <DeleteOutlined />
-            <span>Delete</span>
+            <span className={style.sub_title_delete}>Delete</span>
           </div>
         </div>
         <div className={style.name_cart}>
@@ -30,9 +31,14 @@ const Cartpay = () => {
           <span className={style.price_new}>4.490.000₫</span>
           <span className={style.price_old}>5.190.000₫</span>
           <div className={style.btn_qualyti}>
-            <Button>+</Button>
-            <Input className={style.input_qualyty} />
-            <Button>+</Button>
+            {count < 1 ? (
+              <Button>-</Button>
+            ) : (
+              <Button onClick={() => setCount(count - 1)}>-</Button>
+            )}
+            <Input className={style.input_qualyty} value={count} />
+
+            <Button onClick={() => setCount(count + 1)}>+</Button>
           </div>
         </div>
       </div>
@@ -55,11 +61,25 @@ const Cartpay = () => {
           Sử dụng mã giảm giá
           {upDown ? <CaretUpOutlined /> : <CaretDownOutlined />}
         </Button>
-
-        <div className={style.input_voucher}>
-          <Input className={style.input_items} placeholder="Input Voucher" />
-          <Button type="primary">Accept</Button>
+        {!upDown && (
+          <div className={style.input_voucher}>
+            <Input className={style.input_items} placeholder="Input Voucher" />
+            <Button type="primary">Accept</Button>
+          </div>
+        )}
+      </div>
+      <div className={style.order}>
+        <div className={style.wrap_transport}>
+          <span className={style.sub_transport}>transport fee</span>
+          <span className={style.fee}>Free</span>
         </div>
+        <div className={style.total}>
+          <span className={style.sub_total}>Total Money</span>
+          <span className={style.sub_price}>4.490.000₫</span>
+        </div>
+        <Button className={style.btn_oder} danger type="primary">
+          Order Now
+        </Button>
       </div>
     </div>
   );
