@@ -3,6 +3,7 @@ import { APIService } from "../../services/apiService";
 
 import CustomerService from "./CustomerService/CustomerService";
 import Produce from "../../components/Product";
+import Customercare from "./CustomerCare/customercare";
 
 const HomePage = () => {
   const [listData, setListData] = useState();
@@ -22,7 +23,7 @@ const HomePage = () => {
     <div>
       <Produce />
       <CustomerService />
-      <Customercare />
+      {/* <Customercare /> */}
     </div>
   );
 };

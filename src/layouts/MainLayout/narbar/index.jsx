@@ -164,12 +164,14 @@ const Narbar = () => {
         <Row>
           <Col span={4}>
             <div className={style.logo_narbar}>
-              <Avatar
-                src={logo}
-                shape="square"
-                size={{ xs: 24, sm: 32, md: 40, lg: 40, xl: 50, xxl: 50 }}
-                className=""
-              />
+              <NavLink to="/">
+                <Avatar
+                  src={logo}
+                  shape="square"
+                  size={{ xs: 24, sm: 32, md: 40, lg: 40, xl: 50, xxl: 50 }}
+                  className=""
+                />
+              </NavLink>
             </div>
           </Col>
           <Col span={20}>
