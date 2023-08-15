@@ -11,7 +11,7 @@ const CustomerService = () => {
     <div className={style.wrap_service}>
       <div className={style.wrap_title_service}>
         <span className={style.line_title}></span>
-        <h2 className={style.title_service}>HƯỚNG DẪN SỬ DỤNG</h2>
+        <h2 className={style.title_service}>Dịch Vụ</h2>
         <span className={style.line_title}></span>
       </div>
       <div className={style.content_service}>
