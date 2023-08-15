@@ -33,6 +33,10 @@ a {
   color: aliceblue;
 }
 
+h1 {
+  margin: none !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
