@@ -12,6 +12,7 @@ const dataLaptop = [
     oldPrice: "5.190.000₫",
     newPrice: "4.690.000₫",
     sale: "-34%",
+    quality: 20,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const dataLaptop = [
     oldPrice: "5.190.000₫",
     newPrice: "4.690.000₫",
     sale: "-34%",
+    quality: 30,
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const dataLaptop = [
     oldPrice: "5.190.000₫",
     newPrice: "4.690.000₫",
     sale: "-34%",
+    quality: 40,
   },
   {
     id: 4,
@@ -36,6 +39,7 @@ const dataLaptop = [
     oldPrice: "5.190.000₫",
     newPrice: "4.690.000₫",
     sale: "-34%",
+    quality: 10,
   },
   {
     id: 5,
@@ -44,6 +48,7 @@ const dataLaptop = [
     oldPrice: "5.190.000₫",
     newPrice: "4.690.000₫",
     sale: "-34%",
+    quality: 15,
   },
 ];
 

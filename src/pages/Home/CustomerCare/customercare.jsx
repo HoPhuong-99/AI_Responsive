@@ -1,14 +1,23 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import SwiperCore, {
+//   Navigation,
+//   Pagination,
+//   Controller,
+//   Thumbs,
+//   EffectCoverflow,
+// } from "swiper";
 // import "swiper/swiper-bundle.css";
 
 import style from "./style.module.css";
 import care from "../../../assests/service/care.jpg";
 
+// SwiperCore.use([Navigation, Pagination, Controller, Thumbs, EffectCoverflow]);
+
 const customercare = () => {
   return (
     <div className={style.container_custom_care}>
-      <Swiper
+      {/* <Swiper
         pagination
         effect="coverflow"
         coverflowEffect={{
@@ -41,7 +50,7 @@ const customercare = () => {
             <img className="img-home-photo" src={care} alt="Sweden Photo One" />
           </div>
         </SwiperSlide>
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 };
