@@ -6,11 +6,10 @@ export const productionsSlice = createSlice({
     productions: {
       items: [],
     },
-
-    reducers: {
-      setItemProductions: (state, action) => {
-        state.productions.items = state.payload.items;
-      },
+  },
+  reducers: {
+    setItemProductions: (state, action) => {
+      state.productions.items = state.payload.items;
     },
   },
 });
