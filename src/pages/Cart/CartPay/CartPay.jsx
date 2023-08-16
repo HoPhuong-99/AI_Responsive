@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input } from "antd";
+import { useSelector } from "react-redux";
 import {
   DeleteOutlined,
   CaretUpOutlined,
@@ -10,38 +11,41 @@ import style from "./style.module.css";
 import lap1 from "../../../assests/produce/may1.jpg";
 
 const Cartpay = () => {
+  const listDataCart = useSelector((state) => state.cartSlice?.listCart);
+  console.log("listCart", listDataCart);
+
   const [upDown, setUpDown] = useState(false);
   const [count, setCount] = useState(0);
   return (
     <div className={style.hero_pay}>
-      <div className={style.wrap_cartpay}>
-        <div className={style.img_pay}>
-          <img className={style.img_item} src={lap1} alt="" />
-          <div className={style.delete_pay_item}>
-            <DeleteOutlined />
-            <span className={style.sub_title_delete}>Delete</span>
+      {listDataCart?.map((i) => (
+        <div className={style.wrap_cartpay}>
+          <div className={style.img_pay}>
+            <img className={style.img_item} src={i?.image} alt="" />
+            <div className={style.delete_pay_item}>
+              <DeleteOutlined />
+              <span className={style.sub_title_delete}>Delete</span>
+            </div>
           </div>
-        </div>
-        <div className={style.name_cart}>
-          <h3 className={style.title_cart}>
-            Màn hình Philips 27M1N3200Z 27" IPS 165Hz G-Sync
-          </h3>
-        </div>
-        <div className={style.price_cart}>
-          <span className={style.price_new}>4.490.000₫</span>
-          <span className={style.price_old}>5.190.000₫</span>
-          <div className={style.btn_qualyti}>
-            {count < 1 ? (
-              <Button>-</Button>
-            ) : (
-              <Button onClick={() => setCount(count - 1)}>-</Button>
-            )}
-            <Input className={style.input_qualyty} value={count} />
+          <div className={style.name_cart}>
+            <h3 className={style.title_cart}>{i?.title}</h3>
+          </div>
+          <div className={style.price_cart}>
+            <span className={style.price_new}>4.490.000₫</span>
+            <span className={style.price_old}>5.190.000₫</span>
+            <div className={style.btn_qualyti}>
+              {count < 1 ? (
+                <Button>-</Button>
+              ) : (
+                <Button onClick={() => setCount(count - 1)}>-</Button>
+              )}
+              <Input className={style.input_qualyty} value={count} />
 
-            <Button onClick={() => setCount(count + 1)}>+</Button>
+              <Button onClick={() => setCount(count + 1)}>+</Button>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
       <div className={style.discount}>
         <Button
           className={style.btn_discount}
