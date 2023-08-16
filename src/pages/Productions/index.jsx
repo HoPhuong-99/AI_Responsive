@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import dataLt from "../../database/laptop";
 import style from "./style.module.css";
+import { useSelector } from "react-redux";
+import { APIService } from "../../services/apiService";
 
 const Productions = () => {
   const { id } = useParams();
   const idLaptop = parseInt(id);
+  const [listData, setListData] = useState();
+
+  console.log(listData);
+  console.log(dataLt);
 
   let inforLaptop = dataLt.filter((item) => item.id === idLaptop);
+
+  async function fetchData() {
+    try {
+      const data = await APIService.get_ListData();
+      setListData(data);
+    } catch (error) {}
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>

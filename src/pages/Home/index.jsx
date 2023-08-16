@@ -11,7 +11,6 @@ const HomePage = () => {
   async function fetchData() {
     try {
       const data = await APIService.get_ListData();
-      console.log(data);
       setListData(data);
     } catch (error) {}
   }
