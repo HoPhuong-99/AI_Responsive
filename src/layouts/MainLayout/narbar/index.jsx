@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./style.module.css";
 import { NavLink } from "react-router-dom";
 import { Avatar, Badge, Input, Menu } from "antd";
+import { useSelector } from "react-redux";
 import { Col, Row } from "antd";
 import {
   AppstoreOutlined,
@@ -137,6 +138,8 @@ const items = [
 const Narbar = () => {
   const [current, setCurrent] = useState("mail");
   const [visible, setVisible] = useState(false);
+  const cartQualyti = useSelector((state) => state.cartSlice?.cart);
+  console.log("cart", cartQualyti);
 
   const ref = useRef(null);
 
@@ -212,7 +215,7 @@ const Narbar = () => {
                   </Col>
                   <Col span={3}>
                     <NavLink className={style.element_narbar} to="/cart">
-                      <Badge count={1}>
+                      <Badge count={cartQualyti}>
                         <Avatar
                           src={shopping_cart}
                           shape="square"
