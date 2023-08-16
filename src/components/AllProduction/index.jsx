@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Col, Image, Row } from "antd";
+import { Col, Image, Row, Select, Space } from "antd";
 import style from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import { APIService } from "../../services/apiService";
 import { useDispatch } from "react-redux";
 import { setItemProductions } from "../../redux/productionsSlice";
+import SortMenu from "../SortMenu";
 
-const Produce = () => {
+export const AllProduction = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [sortOrder, setSortOrder] = useState(null);
 
   const [listData, setListData] = useState();
-
-  let listProductions = listData?.slice(0, 8);
 
   const fetchData = async () => {
     try {
@@ -26,9 +25,10 @@ const Produce = () => {
 
   return (
     <div className={style.wrap_produce}>
+      <SortMenu listData={listData} setListData={setListData} />
       <Col xxl={24}>
         <Row gutter={[20, 20]}>
-          {listProductions?.map((item) => (
+          {listData?.map((item) => (
             <>
               <Col
                 span={6}
@@ -49,5 +49,3 @@ const Produce = () => {
     </div>
   );
 };
-
-export default Produce;
