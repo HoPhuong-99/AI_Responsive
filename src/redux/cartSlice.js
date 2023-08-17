@@ -13,6 +13,7 @@ export const cartSlice = createSlice({
 
     itemListCart: (state, action) => {
       state.listCart = [...state.listCart, action.payload];
+      console.log("duy", state.cart);
     },
   },
 });

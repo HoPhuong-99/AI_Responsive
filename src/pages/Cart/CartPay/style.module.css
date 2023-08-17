@@ -149,3 +149,31 @@
     font-size: 20px;
     font-weight: 600;
 }
+
+.cart_emty {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+.sub_emty {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn_emty {
+    width: 35%;
+    margin: auto;
+    padding: 20px 25px;
+    font-weight: 600;
+    color: #1982f9;
+    font-size: 18px;
+    border: 1px solid #1982f9;
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
