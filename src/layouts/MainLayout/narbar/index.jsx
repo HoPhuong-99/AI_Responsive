@@ -11,9 +11,10 @@ import {
 } from "@ant-design/icons";
 import shopping_cart from "../../../assests/sgv/shopping-cart-svgrepo-com.svg";
 import user_login from "../../../assests/sgv/user-svgrepo-com.svg";
-import logo from "../../../assests/sgv/manchester-united.svg";
+import logo from "../../../assests/banner/logo.png";
 import menu_close from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
 import menu_open from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
+import InputSearch from "../../../components/InputSearch";
 
 const { Search } = Input;
 
@@ -156,11 +157,6 @@ const Narbar = () => {
     };
   }, []);
 
-  const onSearch = () => {};
-  const onClick = (e) => {
-    console.log("click ", e);
-  };
-
   return (
     <div className={style.container_narbar}>
       <Col xxl={16} xl={20} lg={24} md={24}>
@@ -182,11 +178,7 @@ const Narbar = () => {
               <Col span={24}>
                 <div className={style.contents_narbar}>
                   <Col span={9}>
-                    <Search
-                      placeholder="input search text"
-                      onSearch={onSearch}
-                      enterButton
-                    />
+                    <InputSearch />
                   </Col>
                   <Col span={3}>
                     <div
@@ -199,7 +191,6 @@ const Narbar = () => {
                     </div>
                     {visible && (
                       <Menu
-                        onClick={onClick}
                         selectedKeys={[current]}
                         mode="horizontal"
                         items={items}

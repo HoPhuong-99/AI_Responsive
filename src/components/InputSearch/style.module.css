@@ -1,0 +1,9 @@
+.container_inputSearch
+{
+    display: flex;
+    position: relative;
+}
+
+.list_itemSearch{
+    position: absolute;
+}
