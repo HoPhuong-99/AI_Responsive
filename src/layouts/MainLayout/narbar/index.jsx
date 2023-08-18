@@ -140,7 +140,6 @@ const Narbar = () => {
   const [current, setCurrent] = useState("mail");
   const [visible, setVisible] = useState(false);
   const cartQualyti = useSelector((state) => state.cartSlice?.cart);
-  console.log("cart", cartQualyti);
 
   const ref = useRef(null);
 

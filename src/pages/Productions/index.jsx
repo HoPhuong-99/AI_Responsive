@@ -4,7 +4,7 @@ import { Rate, Button, Input } from "antd";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { setItemcart } from "../../redux/cartSlice";
+import { setItemcart, itemListCart } from "../../redux/cartSlice";
 import style from "./style.module.css";
 import { APIService } from "../../services/apiService";
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
@@ -33,8 +33,10 @@ const Productions = () => {
     fetchData();
   }, []);
 
-  const handleAddCart = () => {
+  const handleAddCart = (item) => {
     dispatch(setItemcart(count));
+    dispatch(itemListCart(item));
+    console.log("item", item);
   };
 
   return (
@@ -106,7 +108,7 @@ const Productions = () => {
                 className={style.productions_btn_items}
                 type={"primary"}
                 danger
-                onClick={handleAddCart}
+                onClick={() => handleAddCart(item)}
               >
                 Add Cart
               </Button>
