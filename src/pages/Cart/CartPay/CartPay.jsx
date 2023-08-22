@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Input } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   DeleteOutlined,
   CaretUpOutlined,
@@ -10,23 +10,60 @@ import { useNavigate } from "react-router-dom";
 
 import style from "./style.module.css";
 import lap1 from "../../../assests/produce/may1.jpg";
+import { itemListCart } from "../../../redux/cartSlice";
 
 const Cartpay = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const listDataCart = useSelector((state) => state.cartSlice?.listCart);
-  console.log("listCart", listDataCart.length);
-
   const [upDown, setUpDown] = useState(false);
   const [count, setCount] = useState(0);
+  const [total, setTotal] = useState(null);
+
+  let allPriceItem = listDataCart.map((items) => items.price * items.quantily);
+
+  const [quantities, setQuantities] = useState(
+    listDataCart.map((item) => item.quantily)
+  );
+
+  const updateQuantity = (itemId, newQuantity) => {
+    const updatedQuantities = quantities.map((preQuantily, index) =>
+      listDataCart[index].id === itemId ? newQuantity : preQuantily
+    );
+
+    setQuantities(updatedQuantities);
+    dispatch(
+      itemListCart(
+        listDataCart.map((item, index) => ({
+          ...item,
+          quantily: updatedQuantities[index],
+        }))
+      )
+    );
+  };
+
+  const deleteItem = (itemId) => {
+    const updateCart = listDataCart.filter((item) => item.id !== itemId);
+    dispatch(itemListCart(updateCart));
+  };
+
+  const totalPrice = allPriceItem.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    total
+  );
+
   return (
     <>
       {listDataCart.length > 0 ? (
         <div className={style.hero_pay}>
-          {listDataCart?.map((i) => (
-            <div className={style.wrap_cartpay}>
+          {listDataCart?.map((i, index) => (
+            <div className={style.wrap_cartpay} key={i.id}>
               <div className={style.img_pay}>
                 <img className={style.img_item} src={i?.image} alt="" />
-                <div className={style.delete_pay_item}>
+                <div
+                  className={style.delete_pay_item}
+                  onClick={() => deleteItem(i.id)}
+                >
                   <DeleteOutlined />
                   <span className={style.sub_title_delete}>Delete</span>
                 </div>
@@ -35,17 +72,23 @@ const Cartpay = () => {
                 <h3 className={style.title_cart}>{i?.title}</h3>
               </div>
               <div className={style.price_cart}>
-                <span className={style.price_new}>4.490.000₫</span>
-                <span className={style.price_old}>5.190.000₫</span>
+                <span className={style.price_new}>{i.price * i.quantily}</span>
                 <div className={style.btn_qualyti}>
-                  {count < 1 ? (
+                  {i.quantily <= 1 ? (
                     <Button>-</Button>
                   ) : (
-                    <Button onClick={() => setCount(count - 1)}>-</Button>
+                    <Button
+                      onClick={() =>
+                        updateQuantity(i.id, quantities[index] - 1)
+                      }
+                    >
+                      -
+                    </Button>
                   )}
-                  <Input className={style.input_qualyty} value={count} />
-
-                  <Button onClick={() => setCount(count + 1)}>+</Button>
+                  <Input className={style.input_qualyty} value={i.quantily} />
+                  <Button onClick={() => updateQuantity(i.id, i.quantily + 1)}>
+                    +
+                  </Button>
                 </div>
               </div>
             </div>
@@ -86,7 +129,7 @@ const Cartpay = () => {
             </div>
             <div className={style.total}>
               <span className={style.sub_total}>Total Money</span>
-              <span className={style.sub_price}>4.490.000₫</span>
+              <span className={style.sub_price}>{totalPrice}</span>
             </div>
             <Button className={style.btn_oder} danger type="primary">
               Order Now

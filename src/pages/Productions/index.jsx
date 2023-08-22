@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Rate, Button, Input } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { setItemcart, itemListCart } from "../../redux/cartSlice";
@@ -16,11 +16,11 @@ const Productions = () => {
   const idLaptop = parseInt(id);
   const [listData, setListData] = useState();
 
-  console.log("lits", listData, id);
-
   const [value, setValue] = useState(3);
   const [count, setCount] = useState(1);
   let inforLaptop = listData?.filter((item) => item?.id === idLaptop);
+
+  let listCart = useSelector((state) => state.cartSlice.listCart);
 
   const fetchData = async () => {
     try {
@@ -34,9 +34,18 @@ const Productions = () => {
   }, []);
 
   const handleAddCart = (item) => {
-    dispatch(setItemcart(count));
-    dispatch(itemListCart(item));
-    console.log("item", item);
+    const addItem = listCart.find((prevItem) => prevItem?.id === item?.id);
+
+    if (addItem) {
+      const updatedList = listCart.map((prevItem) =>
+        prevItem.id === item.id
+          ? { ...prevItem, quantily: prevItem.quantily + count }
+          : prevItem
+      );
+      dispatch(itemListCart(updatedList));
+    } else {
+      dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
+    }
   };
 
   return (
@@ -45,9 +54,6 @@ const Productions = () => {
         <div className={style.productions_items} key={key}>
           <div className={style.productions_items_left}>
             <img className={style.productions_img} src={item?.image} alt="" />
-            <div className={style.productions_swiper}>
-              swiper a Phương đang fix lòi mồm @@
-            </div>
           </div>
           <div className={style.productions_items_right}>
             <h1 className={style.title_productions}>{item?.title}</h1>
