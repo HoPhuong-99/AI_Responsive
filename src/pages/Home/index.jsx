@@ -7,6 +7,7 @@ import Customercare from "./CustomerCare/customercare";
 import { useNavigate } from "react-router-dom";
 
 import style from "./style.module.css";
+import IntroHome from "./Intro";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -24,14 +25,13 @@ const HomePage = () => {
 
   return (
     <div className={style.container}>
-      <div>
-        <div className={style.title_ListProduc}>
-          <p>Danh sách sản phẩm</p>
-          <p onClick={() => navigate(`/collections`)} className={style.seeAll}>
-            Xem tất cả{" "}
-          </p>
-        </div>
+      <IntroHome />
+      <div className={style.listItem}>
+        <p className={style.titleProduct}>Our Product</p>
         <Produce />
+        <p onClick={() => navigate(`/collections`)} className={style.seeAll}>
+          Show All
+        </p>
       </div>
       <CustomerService />
       {/* <Customercare /> */}

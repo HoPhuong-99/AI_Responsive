@@ -29,13 +29,18 @@
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: unset !important;
   color: aliceblue;
 }
 
 h1 {
-  margin: none !important;
+  margin: unset !important;
 }
+
+p {
+  margin: unset !important;
+}
+
 
 @keyframes App-logo-spin {
   from {
