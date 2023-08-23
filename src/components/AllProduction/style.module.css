@@ -1,16 +1,15 @@
-.infor_laptop{
+.infor_laptop {
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: 100%;
     max-height: 500px;
-    border:  1px solid red;
+    border: 1px solid red;
     border-bottom-left-radius: 20px;
     z-index: 1;
 }
 
-.produce_title
-{
+.produce_title {
     font-size: 20px;
     line-height: 20px;
 }

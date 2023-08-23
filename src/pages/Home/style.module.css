@@ -1,8 +1,14 @@
-.title_ListProduc{
+.title_ListProduc {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    z-index: -1;
 }
 
-.seeAll{
+.seeAll {
     cursor: pointer;
+}
+
+.container {
+    padding-top: 90px;
 }

@@ -23,7 +23,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className={style.container}>
       <div>
         <div className={style.title_ListProduc}>
           <p>Danh sách sản phẩm</p>
