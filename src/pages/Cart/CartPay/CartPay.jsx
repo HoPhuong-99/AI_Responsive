@@ -16,6 +16,7 @@ const Cartpay = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const listDataCart = useSelector((state) => state.cartSlice?.listCart);
+
   const [upDown, setUpDown] = useState(false);
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState(null);

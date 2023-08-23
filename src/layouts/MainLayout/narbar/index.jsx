@@ -5,6 +5,8 @@ import { Avatar, Badge, Input, Menu } from "antd";
 import { useSelector } from "react-redux";
 import { Col, Row } from "antd";
 import { APIService } from "../../../services/apiService";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   AppstoreOutlined,
   MailOutlined,
@@ -16,6 +18,7 @@ import logo from "../../../assests/banner/logo.png";
 import menu_close from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
 import menu_open from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
 import InputSearch from "../../../components/InputSearch";
+import { ItemsSearch } from "../../../redux/searchSlice";
 
 const { Search } = Input;
 
@@ -98,6 +101,8 @@ const fakeMenu = [
 ];
 
 const Narbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [current, setCurrent] = useState("mail");
   const [visible, setVisible] = useState(false);
   const [listKey, setListKey] = useState("");
@@ -107,14 +112,12 @@ const Narbar = () => {
   const [backupDataSearch, setBackupDataSearch] = useState([]);
   const [totalListSearch, setTotalListSearch] = useState([]);
 
-  console.log("listsearch", listSearch, listData, totalListSearch);
   const cartQualyti = useSelector((state) => state.cartSlice?.cart);
-
   const ref = useRef(null);
 
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
-      // setVisible(false);
+      setVisible(false);
       setListKey("");
     }
   };
@@ -127,13 +130,14 @@ const Narbar = () => {
   }, []);
 
   const onSearch = (e) => {
+    console.log("e", e);
     setListSearch(e);
     if (e?.length === 0) {
       return setListData([]);
     }
 
     const fillterSearch = backupDataSearch?.filter((i) =>
-      i?.title.toLowerCase().includes(e.toLowerCase())
+      i?.title?.toLowerCase()?.includes(e?.toLowerCase())
     );
     const fillAraySearch = fillterSearch?.slice(0, 5);
     if (fillterSearch.length > 5) {
@@ -142,6 +146,7 @@ const Narbar = () => {
       setListData(fillterSearch);
     }
     setTotalListSearch(fillterSearch);
+    dispatch(ItemsSearch(fillterSearch));
   };
 
   useEffect(() => {
@@ -295,7 +300,7 @@ const Narbar = () => {
                   <Col span={9}>
                     <Search
                       placeholder="input search text"
-                      onSearch={onSearch}
+                      onChange={(e) => onSearch(e.target.value)}
                       enterButton
                       allowClear
                       className={style.input_search}
@@ -322,9 +327,13 @@ const Narbar = () => {
                           </div>
                         ))}
                         <div className={style.total_search}>
-                          <span>
-                            Xem thêm {totalListSearch?.length} sản phẩm
-                          </span>
+                          {totalListSearch?.length !== 0 ? (
+                            <span onClick={() => navigate("/search")}>
+                              Xem thêm {totalListSearch?.length} sản phẩm
+                            </span>
+                          ) : (
+                            <span>Không có sản phẩm nào</span>
+                          )}
                         </div>
                       </div>
                     )}
@@ -342,7 +351,7 @@ const Narbar = () => {
                       <div className={style.wrap_menu}>
                         <div
                           className={style.menu_item}
-                          onClick={() => setListKey("lap")}
+                          onMouseOver={() => setListKey("lap")}
                           ref={ref}
                         >
                           <span>
@@ -366,7 +375,7 @@ const Narbar = () => {
                               <path
                                 d="M1 12L19 12"
                                 stroke="currentcolor"
-                                stroke-linecap="round"
+                                strokeLinecap="round"
                               ></path>
                             </svg>
                           </span>
@@ -383,15 +392,15 @@ const Narbar = () => {
                                 d="M1.5 1.5L4.5 4L1.5 6.5"
                                 stroke="currentColor"
                                 stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                               ></path>
                             </svg>
                           </span>
                         </div>
                         <div
                           className={style.menu_item}
-                          onClick={() => setListKey("pc")}
+                          onMouseOver={() => setListKey("pc")}
                           ref={ref}
                         >
                           <span>
@@ -446,15 +455,15 @@ const Narbar = () => {
                                 d="M1.5 1.5L4.5 4L1.5 6.5"
                                 stroke="currentColor"
                                 stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                               ></path>
                             </svg>
                           </span>
                         </div>
                         <div
                           className={style.menu_item}
-                          onClick={() => setListKey("dv")}
+                          onMouseOver={() => setListKey("dv")}
                           ref={ref}
                         >
                           <span>
@@ -468,20 +477,20 @@ const Narbar = () => {
                               <path
                                 d="M9 3.5V6M9 3.5C9 3.00555 9.14662 2.5222 9.42133 2.11108C9.69603 1.69995 10.0865 1.37952 10.5433 1.1903C11.0001 1.00108 11.5028 0.951575 11.9877 1.04804C12.4727 1.1445 12.9181 1.3826 13.2678 1.73223C13.6174 2.08187 13.8555 2.52732 13.952 3.01228C14.0484 3.49723 13.9989 3.99989 13.8097 4.45671C13.6205 4.91352 13.3 5.30397 12.8889 5.57867C12.4778 5.85338 11.9945 6 11.5 6H9M9 3.5C9 3.00555 8.85338 2.5222 8.57867 2.11108C8.30397 1.69995 7.91352 1.37952 7.45671 1.1903C6.99989 1.00108 6.49723 0.951575 6.01227 1.04804C5.52732 1.1445 5.08187 1.3826 4.73223 1.73223C4.3826 2.08187 4.1445 2.52732 4.04804 3.01228C3.95157 3.49723 4.00108 3.99989 4.1903 4.45671C4.37952 4.91352 4.69995 5.30397 5.11108 5.57867C5.5222 5.85338 6.00555 6 6.5 6H9"
                                 stroke="currentcolor"
-                                stroke-miterlimit="10"
-                                stroke-linecap="round"
+                                strokeMiterlimit="10"
+                                strokeLinecap="round"
                               ></path>
                               <path
                                 d="M15.6667 6H2.33333C1.59695 6 1 6.63959 1 7.42857V9.57143C1 10.3604 1.59695 11 2.33333 11H15.6667C16.403 11 17 10.3604 17 9.57143V7.42857C17 6.63959 16.403 6 15.6667 6Z"
                                 stroke="currentcolor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                               ></path>
                               <path
                                 d="M16 10.7895V16.9474C16 17.4918 15.7788 18.0139 15.3849 18.3988C14.9911 18.7837 14.457 19 13.9 19H4.1C3.54305 19 3.0089 18.7837 2.61508 18.3988C2.22125 18.0139 2 17.4918 2 16.9474V10.7895M9 6V19"
                                 stroke="currentcolor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                               ></path>
                             </svg>
                           </span>
@@ -499,8 +508,8 @@ const Narbar = () => {
                                 d="M1.5 1.5L4.5 4L1.5 6.5"
                                 stroke="currentColor"
                                 stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                               ></path>
                             </svg>
                           </span>
