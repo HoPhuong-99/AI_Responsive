@@ -2,13 +2,8 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    z-index: -1;
 }
 
 .seeAll {
     cursor: pointer;
-}
-
-.container {
-    padding-top: 90px;
 }

@@ -6,7 +6,9 @@
     color: white;
     justify-content: center;
     align-items: center;
-    position: fixed;
+    position: sticky;
+    z-index: 1;
+    top: 0;
 }
 
 
@@ -88,7 +90,6 @@
     top: 105%;
     left: 10px;
     right: 0px;
-    z-index: 8;
     background: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
     width: 100%;
