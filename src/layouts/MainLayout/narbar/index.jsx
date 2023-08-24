@@ -391,7 +391,7 @@ const Narbar = () => {
                               <path
                                 d="M1.5 1.5L4.5 4L1.5 6.5"
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                               ></path>
@@ -454,7 +454,7 @@ const Narbar = () => {
                               <path
                                 d="M1.5 1.5L4.5 4L1.5 6.5"
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                               ></path>
@@ -507,7 +507,7 @@ const Narbar = () => {
                               <path
                                 d="M1.5 1.5L4.5 4L1.5 6.5"
                                 stroke="currentColor"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                               ></path>
