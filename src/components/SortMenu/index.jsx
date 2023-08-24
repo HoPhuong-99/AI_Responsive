@@ -52,7 +52,6 @@ const SortMenu = (props) => {
 
   const sortMenu = (
     <Menu onClick={(e) => handleSort(e.key)}>
-      {/* <Menu.Item key="all">All</Menu.Item> */}
       <Menu.Item key="ascend">A -{">"} Z</Menu.Item>
       <Menu.Item key="descend">Z -{">"} A</Menu.Item>
       <Menu.Item key="lowToHigh">lowToHigh</Menu.Item>

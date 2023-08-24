@@ -1,23 +1,44 @@
 .infor_laptop {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-height: 500px;
-    border: 1px solid red;
-    border-bottom-left-radius: 20px;
-    z-index: 1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 500px;
+  z-index: 1;
 }
 
 .produce_title {
-    font-size: 20px;
-    line-height: 20px;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .infor_laptop img {
-    width: 100%;
-    max-width: 100%;
-    max-height: 300px;
-    height: 250px;
-    z-index: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 300px;
+  height: 250px;
+  z-index: 0;
+  transition: transform 2s ease;
+}
+
+.infor_laptop img:hover {
+  transform: scale(1.1);
+}
+
+.wrap_produce {
+  display: grid;
+  grid-auto-rows: auto auto;
+  gap: 20px;
+  z-index: 0;
+  position: relative;
+}
+.container_RelatedProduct {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.title_RelatedProduct {
+  display: flex;
+  justify-content: center;
 }

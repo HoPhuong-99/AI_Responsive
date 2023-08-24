@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { setItemcart, itemListCart } from "../../redux/cartSlice";
 import style from "./style.module.css";
 import { APIService } from "../../services/apiService";
+import RelatedProductions from "../../components/Product/RelatedProduct";
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 
 const Productions = () => {
@@ -18,7 +19,11 @@ const Productions = () => {
 
   const [value, setValue] = useState(3);
   const [count, setCount] = useState(1);
+
   let inforLaptop = listData?.filter((item) => item?.id === idLaptop);
+  let listRelatedItem = listData?.filter(
+    (item) => item?.category === inforLaptop[0].category
+  );
 
   let listCart = useSelector((state) => state.cartSlice.listCart);
 
@@ -151,6 +156,7 @@ const Productions = () => {
           </div>
         ))}
       </div>
+      <RelatedProductions listRelatedItem={listRelatedItem} />
     </>
   );
 };

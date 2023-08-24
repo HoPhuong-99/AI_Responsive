@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Mainlayout from "../layouts/MainLayout";
-import HomePage from "../pages/Home";
-import Cart from "../pages/Cart";
-import Productions from "../pages/Productions";
-import Collections from "../pages/Collections";
-import Search from "../pages/Search/Search";
+import HomePage from "../pages/HomePage";
+import Cart from "../pages/CartPage";
+import Productions from "../pages/ProductionPage";
+import Collections from "../pages/CollectionPage";
+import Search from "../pages/SearchPage/Search";
 
 const Router = () => (
   <React.Suspense>

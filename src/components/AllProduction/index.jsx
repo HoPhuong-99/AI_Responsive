@@ -36,10 +36,24 @@ export const AllProduction = () => {
                 onClick={() => navigate(`/productions/${item.id}`)}
               >
                 <div className={style.infor_laptop}>
-                  <img src={item?.image} alt="" />
-                  <h1 className={style.produce_title}>{item?.title}</h1>
-                  <span className={style.produce_price}>{item?.price} $</span>
-                  <span className={style.sale}>{item?.category}</span>
+                  <Row gutter={[20, 20]} justify={"center"}>
+                    <Col span={20}>
+                      <img src={item?.image} alt="" />
+                    </Col>
+                    <Row justify={"center"}>
+                      <Col span={22}>
+                        <h1 className={style.produce_title}>{item?.title}</h1>
+                      </Col>
+                      <Col span={22}>
+                        <span className={style.produce_price}>
+                          {item?.price} $
+                        </span>
+                      </Col>
+                      <Col span={22}>
+                        <span className={style.sale}>{item?.category}</span>
+                      </Col>
+                    </Row>
+                  </Row>
                 </div>
               </Col>
             </>

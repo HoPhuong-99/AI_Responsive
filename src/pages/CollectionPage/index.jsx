@@ -6,11 +6,8 @@ import SortMenu from "../../components/SortMenu";
 
 const Collections = () => {
   return (
-    <div>
-      <div className={style.all_Productions}>
-        <p>xem tất cả</p>
-        <AllProduction />
-      </div>
+    <div className={style.all_Productions}>
+      <AllProduction />
     </div>
   );
 };
