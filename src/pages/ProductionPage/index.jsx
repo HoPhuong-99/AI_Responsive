@@ -19,8 +19,9 @@ import lap3 from "../../assests/swiper/lap3.png";
 import lap4 from "../../assests/swiper/lap4.png";
 import lap5 from "../../assests/swiper/lap5.png";
 import lap6 from "../../assests/swiper/lap6.png";
-
+import RelatedProductions from "../../components/Product/RelatedProduct";
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+
 const Productions = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,7 +32,11 @@ const Productions = () => {
 
   const [value, setValue] = useState(3);
   const [count, setCount] = useState(1);
+
   let inforLaptop = listData?.filter((item) => item?.id === idLaptop);
+  let listRelatedItem = listData?.filter(
+    (item) => item?.category === inforLaptop[0].category
+  );
 
   let listCart = useSelector((state) => state.cartSlice.listCart);
 
@@ -231,6 +236,7 @@ const Productions = () => {
           ))}
         </div>
       </div>
+      <RelatedProductions listRelatedItem={listRelatedItem} />
     </>
   );
 };

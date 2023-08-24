@@ -26,7 +26,19 @@
 }
 
 .wrap_produce {
-  display: flex;
+  display: grid;
+  grid-auto-rows: auto auto;
+  gap: 20px;
   z-index: 0;
   position: relative;
+}
+.container_RelatedProduct {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.title_RelatedProduct {
+  display: flex;
+  justify-content: center;
 }
