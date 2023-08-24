@@ -113,3 +113,28 @@
     font-weight: 600;
     font-size: 18px;
 }
+
+.breadcrumb {
+    background: transparent;
+    padding: 20px 0 0 0;
+    white-space: nowrap;
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    gap: 10px;
+    color: #111111;
+}
+
+.breadcrumb_home {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: blue;
+    cursor: pointer;
+}
+
+.breadcrumb_items {
+    font-weight: 600;
+}
