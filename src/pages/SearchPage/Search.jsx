@@ -7,7 +7,6 @@ import style from "./style.module.css";
 const Search = () => {
   const navigate = useNavigate();
   const listDataSearch = useSelector((state) => state?.searchSlice?.listSearch);
-  console.log("listSearch", listDataSearch);
   return (
     <>
       {listDataSearch?.length ? (

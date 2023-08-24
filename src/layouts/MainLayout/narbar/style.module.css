@@ -110,6 +110,12 @@
     padding: 12px 0;
     border-bottom: 1px solid #ECECEC;
     align-items: center;
+    cursor: pointer;
+}
+
+.wrap_items_search:hover {
+    opacity: 0.8;
+    color: #E30019;
 }
 
 .img_search {

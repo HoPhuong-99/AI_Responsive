@@ -8,7 +8,6 @@ export const searchSlice = createSlice({
     reducers: {
         ItemsSearch: (state, action) => {
             state.listSearch = action.payload
-            console.log("searchList", state.listSearch);
         }
     }
 })

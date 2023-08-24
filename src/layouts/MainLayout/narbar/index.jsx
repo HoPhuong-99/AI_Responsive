@@ -111,6 +111,7 @@ const Narbar = () => {
   const [listData, setListData] = useState([]);
   const [backupDataSearch, setBackupDataSearch] = useState([]);
   const [totalListSearch, setTotalListSearch] = useState([]);
+  const [clickSearch, setClickSearch] = useState(false);
 
   const cartQualyti = useSelector((state) => state.cartSlice?.cart);
   const ref = useRef(null);
@@ -130,7 +131,6 @@ const Narbar = () => {
   }, []);
 
   const onSearch = (e) => {
-    console.log("e", e);
     setListSearch(e);
     if (e?.length === 0) {
       return setListData([]);
@@ -304,14 +304,19 @@ const Narbar = () => {
                       enterButton
                       allowClear
                       className={style.input_search}
+                      onClick={() => setClickSearch(false)}
+                      onBlur={() => setClickSearch(true)}
                     />
-                    {listSearch && (
+                    {listSearch && clickSearch === false && (
                       <div className={style.container_search}>
                         {listData.map((e, key) => (
                           <div
                             className={style.wrap_items_search}
                             key={key}
-                            onClick={() => navigate(`/productions/${e?.id}`)}
+                            onClick={() => {
+                              navigate(`/productions/${e?.id}`);
+                              setClickSearch(true);
+                            }}
                           >
                             <div className={style.items_search_left}>
                               <span className={style.title_search}>
@@ -332,7 +337,12 @@ const Narbar = () => {
                         ))}
                         <div className={style.total_search}>
                           {totalListSearch?.length !== 0 ? (
-                            <span onClick={() => navigate("/search")}>
+                            <span
+                              onClick={() => {
+                                navigate("/search");
+                                setClickSearch(true);
+                              }}
+                            >
                               Xem thêm {totalListSearch?.length} sản phẩm
                             </span>
                           ) : (

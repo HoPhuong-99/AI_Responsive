@@ -5,7 +5,6 @@ import style from "./style.module.css";
 
 const InforPay = () => {
   const [checkBill, setCheckBill] = useState(false);
-  console.log("chekc", checkBill);
 
   return (
     <div className={style.wrap_infor_pay}>

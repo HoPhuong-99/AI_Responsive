@@ -22,8 +22,8 @@ const steps = [
   },
 ];
 const Cart = () => {
-  // const wrapSteps = [<CartPay />, <InforPay />, <Pay />, <CompletePay />];
-  const wrapSteps = [<CartPay />];
+  const wrapSteps = [<CartPay />, <InforPay />, <Pay />, <CompletePay />];
+  // const wrapSteps = [<CartPay />];
   const [current, setCurrent] = useState(0);
   const next = () => {
     setCurrent(current + 1);

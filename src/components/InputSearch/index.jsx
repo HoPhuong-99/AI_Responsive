@@ -5,9 +5,7 @@ import style from "./style.module.css";
 const { Search } = Input;
 
 const InputSearch = () => {
-  const handleSearch = (e) => {
-    console.log(e.target.value);
-  };
+  const handleSearch = (e) => {};
 
   return (
     <div className={style.container_inputSearch}>

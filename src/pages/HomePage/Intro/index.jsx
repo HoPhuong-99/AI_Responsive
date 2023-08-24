@@ -9,7 +9,6 @@ import dataBaner from "../../../database/laptop";
 import style from "./style.module.css";
 
 const IntroHome = () => {
-  console.log(dataBaner);
   return (
     <>
       <Swiper
