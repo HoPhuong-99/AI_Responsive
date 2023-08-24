@@ -308,7 +308,11 @@ const Narbar = () => {
                     {listSearch && (
                       <div className={style.container_search}>
                         {listData.map((e, key) => (
-                          <div className={style.wrap_items_search} key={key}>
+                          <div
+                            className={style.wrap_items_search}
+                            key={key}
+                            onClick={() => navigate(`/productions/${e?.id}`)}
+                          >
                             <div className={style.items_search_left}>
                               <span className={style.title_search}>
                                 {e?.title}

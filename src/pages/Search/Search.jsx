@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import style from "./style.module.css";
 
 const Search = () => {
+  const navigate = useNavigate();
   const listDataSearch = useSelector((state) => state?.searchSlice?.listSearch);
   console.log("listSearch", listDataSearch);
   return (
@@ -18,7 +20,11 @@ const Search = () => {
           </div>
           <div className={style.container_items}>
             {listDataSearch?.map((e, key) => (
-              <div className={style.wrap_items_search} key={key}>
+              <div
+                className={style.wrap_items_search}
+                key={key}
+                onClick={() => navigate(`/productions/${e?.id}`)}
+              >
                 <div className={style.img_search}>
                   <img className={style.img_items} src={e?.image} alt="" />
                 </div>

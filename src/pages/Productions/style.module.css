@@ -3,6 +3,7 @@
     background-color: #fff;
     border-radius: 4px;
     margin: 20px 0;
+    flex-direction: row;
 }
 
 .productions_items {
@@ -137,4 +138,23 @@
 
 .breadcrumb_items {
     font-weight: 600;
+}
+
+.product_left {
+    width: 40%;
+}
+
+.product_right {
+    width: 60%;
+    border-left: 1px solid #ccc;
+}
+
+.productions_img_items {
+    width: 60px;
+    height: 60px;
+    border: 1px solid red !important;
+}
+
+.swiper-slide-thumb-active {
+    border: 1px solid red !important;
 }
