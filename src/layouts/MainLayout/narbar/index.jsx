@@ -18,7 +18,7 @@ import logo from "../../../assests/banner/logo.png";
 import menu_close from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
 import menu_open from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
 import InputSearch from "../../../components/InputSearch";
-import { ItemsSearch } from "../../../redux/searchSlice";
+import { ItemsSearch, InputSearchItems } from "../../../redux/searchSlice";
 
 const { Search } = Input;
 
@@ -147,6 +147,7 @@ const Narbar = () => {
     }
     setTotalListSearch(fillterSearch);
     dispatch(ItemsSearch(fillterSearch));
+    dispatch(InputSearchItems(e));
   };
 
   useEffect(() => {
@@ -313,7 +314,8 @@ const Narbar = () => {
                           <div
                             className={style.wrap_items_search}
                             key={key}
-                            onClick={() => {
+                            onClick={(el) => {
+                              el.preventDefault();
                               navigate(`/productions/${e?.id}`);
                               setClickSearch(true);
                             }}

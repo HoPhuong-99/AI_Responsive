@@ -18,7 +18,7 @@
   max-height: 300px;
   height: 250px;
   z-index: 0;
-  transition: transform 2s ease;
+  transition: transform 0.1s ease;
 }
 
 .infor_laptop img:hover {
@@ -32,6 +32,7 @@
   z-index: 0;
   position: relative;
 }
+
 .container_RelatedProduct {
   display: grid;
   grid-template-rows: auto;

@@ -7,6 +7,9 @@ import style from "./style.module.css";
 const Search = () => {
   const navigate = useNavigate();
   const listDataSearch = useSelector((state) => state?.searchSlice?.listSearch);
+  const inputDataSearch = useSelector(
+    (state) => state?.searchSlice?.inputSearchs
+  );
   return (
     <>
       {listDataSearch?.length ? (
@@ -14,7 +17,8 @@ const Search = () => {
           <div className={style.title_search}>
             <h2 className={style.title_sarch_top}>Search</h2>
             <span className={style.sub_title_top}>
-              Tìm kiếm theo m .({listDataSearch?.length} sản phẩm)
+              Tìm kiếm theo {inputDataSearch} .({listDataSearch?.length} sản
+              phẩm)
             </span>
           </div>
           <div className={style.container_items}>
