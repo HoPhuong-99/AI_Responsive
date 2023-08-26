@@ -6,7 +6,6 @@ import Cart from "../pages/CartPage";
 import Productions from "../pages/ProductionPage";
 import Collections from "../pages/CollectionPage";
 import Search from "../pages/SearchPage/Search";
-import Login from "../pages/LoginPage/LoginPage";
 
 const Router = () => (
   <React.Suspense>
@@ -17,7 +16,6 @@ const Router = () => (
         <Route path="/productions/:id" element={<Productions />} />
         <Route path="/collections" element={<Collections />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/login" element={<Login />} />
       </Route>
       <Route path="/" element></Route>
     </Routes>

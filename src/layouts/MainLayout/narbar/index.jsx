@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./style.module.css";
 import { NavLink } from "react-router-dom";
-import { Avatar, Badge, Input, Menu } from "antd";
+import { Avatar, Badge, Button, Input, Menu, Modal } from "antd";
 import { useSelector } from "react-redux";
 import { Col, Row } from "antd";
 import { APIService } from "../../../services/apiService";
@@ -19,6 +19,8 @@ import menu_close from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
 import menu_open from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
 import InputSearch from "../../../components/InputSearch";
 import { ItemsSearch, InputSearchItems } from "../../../redux/searchSlice";
+import Login from "../../../components/Login&Register/Login";
+import Register from "../../../components/Login&Register/Register";
 
 const { Search } = Input;
 
@@ -112,6 +114,29 @@ const Narbar = () => {
   const [backupDataSearch, setBackupDataSearch] = useState([]);
   const [totalListSearch, setTotalListSearch] = useState([]);
   const [clickSearch, setClickSearch] = useState(false);
+  const [checkRegister, setCheckRegister] = useState(false);
+
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState("Content of the modal");
+
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  const handleOk = () => {
+    setModalText("The modal will be closed after two seconds");
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    console.log("Clicked cancel button");
+    setOpen(false);
+  };
 
   const cartQualyti = useSelector((state) => state.cartSlice?.cart);
   const ref = useRef(null);
@@ -628,8 +653,23 @@ const Narbar = () => {
                   <Col span={3}>
                     <NavLink className={style.element_narbar}>
                       <Avatar src={user_login} shape="square" size="small" />
-                      <p>Đăng nhập</p>
+                      <p onClick={showModal}>Đăng nhập</p>
                     </NavLink>
+                    <Modal
+                      open={open}
+                      confirmLoading={confirmLoading}
+                      onCancel={handleCancel}
+                      onOk={handleOk}
+                      footer={null}
+                      className={style.popup_Login}
+                      wrapClassName={style.popup_Login}
+                    >
+                      {!checkRegister ? (
+                        <Login setCheckRegister={setCheckRegister} />
+                      ) : (
+                        <Register setCheckRegister={setCheckRegister} />
+                      )}
+                    </Modal>
                   </Col>
                 </div>
               </Col>
