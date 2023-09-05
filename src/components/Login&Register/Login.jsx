@@ -1,26 +1,46 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, message } from "antd";
 
 import style from "./style.module.css";
 
 const Login = (props) => {
   const { setCheckRegister, checkRegister } = props;
+  const [messageApi, contextHolder] = message.useMessage();
+  const [statusLogin, setStatusLogin] = useState(true);
+  const key = "updatable";
+
   const [form] = Form.useForm();
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    setStatusLogin(false);
   };
 
-  const handleLogin = () => {
-    const username = form.getFieldValue("username");
-    const password = form.getFieldValue("password");
+  const handleLogin = (values) => {
+    setStatusLogin(true);
+  };
 
-    const data = {
-      username: username,
-      password: password,
-    };
+  const openMessage = () => {
+    messageApi.open({
+      key,
+      type: "",
+      content: "Loading...",
+    });
+    setTimeout(() => {
+      if (statusLogin === true) {
+        messageApi.success({
+          key,
+          type: "success",
+          content: "Loaded!",
+          duration: 2,
+        });
+      } else {
+        messageApi.error({
+          key,
+          type: "error",
+          content: "Failed!",
+          duration: 2,
+        });
+      }
+    }, 1000);
   };
 
   return (
@@ -30,13 +50,14 @@ const Login = (props) => {
           <h1 className={style.title_login}>ĐĂNG NHẬP </h1>
         </div>
         <div className={style.wrap_input_login}>
+          {statusLogin === true && <>{contextHolder}</>}
           <Form
             className={style.wrap_form}
             name="basic"
             initialValues={{
               remember: true,
             }}
-            onFinish={onFinish}
+            onFinish={handleLogin}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
             labelCol={{ span: 5 }}
@@ -101,7 +122,7 @@ const Login = (props) => {
                 type="primary"
                 htmlType="submit"
                 className={style.btn_login}
-                onClick={handleLogin()}
+                onClick={openMessage}
               >
                 Login
               </Button>

@@ -18,7 +18,9 @@ const RelatedProductions = (props) => {
                 <Col
                   span={6}
                   key={item.id}
-                  onClick={() => navigate(`/productions/${item.id}`)}
+                  onClick={() =>
+                    window.location.assign(`/productions/${item.id}`)
+                  }
                 >
                   <div className={style.infor_laptop}>
                     <Row gutter={[20, 20]} justify={"center"}>

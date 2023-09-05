@@ -651,9 +651,12 @@ const Narbar = () => {
                     </NavLink>
                   </Col>
                   <Col span={3}>
-                    <NavLink className={style.element_narbar}>
+                    <NavLink
+                      className={style.element_narbar}
+                      onClick={showModal}
+                    >
                       <Avatar src={user_login} shape="square" size="small" />
-                      <p onClick={showModal}>Đăng nhập</p>
+                      <p>Đăng nhập</p>
                     </NavLink>
                     <Modal
                       open={open}

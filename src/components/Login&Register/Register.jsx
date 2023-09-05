@@ -8,10 +8,10 @@ const Register = (props) => {
   const { setCheckRegister } = props;
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
+  const Register = (values) => {
     console.log("Success:", values);
   };
-  const onFinishFailed = (errorInfo) => {
+  const RegisterFail = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
@@ -31,8 +31,6 @@ const Register = (props) => {
       phone: phone,
       address: address,
     };
-
-    console.log(data);
   };
 
   return (
@@ -48,8 +46,8 @@ const Register = (props) => {
             initialValues={{
               remember: true,
             }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
+            onFinish={Register}
+            onFinishFailed={RegisterFail}
             autoComplete="off"
             labelCol={{ span: 7 }}
             wrapperCol={{ span: 20 }}

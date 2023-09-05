@@ -25,7 +25,7 @@ const HomePage = () => {
 
   return (
     <div className={style.container}>
-      <IntroHome />
+      {/* <IntroHome /> */}
       <div className={style.listItem}>
         <p className={style.titleProduct}>Our Product</p>
         <Produce />

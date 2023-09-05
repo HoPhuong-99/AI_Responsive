@@ -51,18 +51,23 @@ const Productions = () => {
     fetchData();
   }, []);
 
-  const handleAddCart = (item) => {
+  const handleAddCart = async (item) => {
     const addItem = listCart.find((prevItem) => prevItem?.id === item?.id);
-
-    if (addItem) {
-      const updatedList = listCart.map((prevItem) =>
-        prevItem.id === item.id
-          ? { ...prevItem, quantily: prevItem.quantily + count }
-          : prevItem
-      );
-      dispatch(itemListCart(updatedList));
-    } else {
-      dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
+    try {
+      if (addItem) {
+        const updatedList = listCart.map((prevItem) =>
+          prevItem.id === item.id
+            ? { ...prevItem, quantily: prevItem.quantily + count }
+            : prevItem
+        );
+        dispatch(itemListCart(updatedList));
+        dispatch(setItemcart(count));
+      } else {
+        dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
+        dispatch(setItemcart(count));
+      }
+    } catch (error) {
+      console.error("Lỗi xảy ra khi thêm vào giỏ hàng:", error);
     }
   };
 
@@ -136,7 +141,7 @@ const Productions = () => {
           >
             {inforLaptop?.map((e) => (
               <SwiperSlide>
-                <img className={style.productions_img} src={e?.image} url="" />
+                <img className={style.productions_img} src={e?.image} alt="" />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -157,6 +162,7 @@ const Productions = () => {
                   className={style.productions_img_items}
                   src={e?.image}
                   url=""
+                  alt=""
                 />
               </SwiperSlide>
             ))}
