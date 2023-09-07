@@ -6,6 +6,7 @@ import CompletePay from "./CompletePay/CompletePay";
 import InforPay from "./InforPay/InforPay";
 import Pay from "./Pay/Pay";
 import style from "./style.module.css";
+import { useNavigate } from "react-router-dom";
 
 const steps = [
   {
@@ -32,6 +33,8 @@ const Cart = () => {
   const prev = () => {
     setCurrent(current - 1);
   };
+
+  const navigate = useNavigate();
   return (
     <div className={style.container_pay}>
       <div className={style.wrap_btn}>
@@ -56,6 +59,7 @@ const Cart = () => {
         <Steps current={current} items={steps} />
         <div className="wrap-children-pay">{wrapSteps[current]}</div>
       </div>
+      <button onClick={() => navigate("/payment")}>Confirm</button>
     </div>
   );
 };
