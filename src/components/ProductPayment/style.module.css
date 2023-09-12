@@ -1,16 +1,30 @@
 .infor_Product {
   width: 100%;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 20px;
 }
 
-.content_Produt{
-    display: grid;
-    grid-template-rows: auto;
-    gap: 20px;
+.content_Produt {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 20px;
 }
 
 .noteMessage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.timeShip {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  align-items: center;
+}
+
+input {
+  width: 50%;
 }
