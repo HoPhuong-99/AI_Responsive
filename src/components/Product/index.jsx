@@ -33,7 +33,7 @@ const Produce = () => {
               span={6}
               key={item.id}
               onClick={() => {
-                navigate(`/productions/${item.id}`);
+                navigate(`/productions/${item.productId}`);
                 localStorage.setItem("idProduct", item?.productId);
               }}
             >

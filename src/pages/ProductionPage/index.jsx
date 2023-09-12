@@ -35,10 +35,8 @@ const Productions = () => {
   const [value, setValue] = useState(3);
   const [count, setCount] = useState(1);
 
-  let inforLaptop = listData?.filter((item) => {
-    // item?.productId === getID;
-    console.log("ìnor", item?.productId, getID);
-  });
+  let inforLaptop = listData?.filter((item) => item?.productId == getID);
+  console.log("ìnor", inforLaptop);
   // let listRelatedItem = listData?.filter(
   //   (item) => item?.category === inforLaptop[0].category
   // );
