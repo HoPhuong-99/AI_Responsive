@@ -15,7 +15,7 @@ const HomePage = () => {
 
   async function fetchData() {
     try {
-      const data = await APIService.get_ListData();
+      const data = await APIService.ListProducts();
       setListData(data);
     } catch (error) {}
   }
@@ -25,7 +25,7 @@ const HomePage = () => {
 
   return (
     <div className={style.container}>
-      {/* <IntroHome /> */}
+      <IntroHome />
       <div className={style.listItem}>
         <p className={style.titleProduct}>Our Product</p>
         {/* <Produce /> */}

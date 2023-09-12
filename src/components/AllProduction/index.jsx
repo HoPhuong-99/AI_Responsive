@@ -15,8 +15,8 @@ export const AllProduction = () => {
 
   const fetchData = async () => {
     try {
-      const data = await APIService.get_ListData();
-      setListData(data);
+      const data = await APIService.ListProducts();
+      setListData(data?.data);
     } catch (error) {}
   };
   useEffect(() => {
@@ -30,10 +30,11 @@ export const AllProduction = () => {
         <Row gutter={[20, 20]}>
           {listData?.map((item) => (
             <>
+              {" "}
               <Col
                 span={6}
                 key={item.id}
-                onClick={() => navigate(`/productions/${item.id}`)}
+                onClick={() => navigate(`/productions/${item?.productId}`)}
               >
                 <div className={style.infor_laptop}>
                   <Row gutter={[20, 20]} justify={"center"}>

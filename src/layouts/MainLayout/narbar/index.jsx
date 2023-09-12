@@ -295,7 +295,7 @@ const Narbar = () => {
   ];
 
   const getDataSearch = async () => {
-    const result = await APIService.get_ListData();
+    const result = await APIService.ListProducts();
     setBackupDataSearch(result);
   };
 
