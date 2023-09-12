@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { APIService } from "../../services/apiService";
+import { useNavigate } from "react-router-dom";
 
+import { APIService } from "../../services/apiService";
 import CustomerService from "./CustomerService/CustomerService";
 import Produce from "../../components/Product";
 import Customercare from "./CustomerCare/customercare";
-import { useNavigate } from "react-router-dom";
-
-import style from "./style.module.css";
 import IntroHome from "./Intro";
+import Category from "../../components/Category/Category";
+import style from "./style.module.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -28,7 +28,8 @@ const HomePage = () => {
       {/* <IntroHome /> */}
       <div className={style.listItem}>
         <p className={style.titleProduct}>Our Product</p>
-        <Produce />
+        {/* <Produce /> */}
+        <Category />
         <p onClick={() => navigate(`/collections`)} className={style.seeAll}>
           Show All
         </p>
