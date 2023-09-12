@@ -23,27 +23,32 @@ import RelatedProductions from "../../components/Product/RelatedProduct";
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 
 const Productions = () => {
+  const getID = localStorage.getItem("idProduct");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const idLaptop = parseInt(id);
   const [listData, setListData] = useState();
+  console.log("list", listData);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const [value, setValue] = useState(3);
   const [count, setCount] = useState(1);
 
-  let inforLaptop = listData?.filter((item) => item?.id === idLaptop);
-  let listRelatedItem = listData?.filter(
-    (item) => item?.category === inforLaptop[0].category
-  );
+  let inforLaptop = listData?.filter((item) => {
+    // item?.productId === getID;
+    console.log("ìnor", item?.productId, getID);
+  });
+  // let listRelatedItem = listData?.filter(
+  //   (item) => item?.category === inforLaptop[0].category
+  // );
 
   let listCart = useSelector((state) => state.cartSlice.listCart);
 
   const fetchData = async () => {
     try {
-      const result = await APIService.get_ListData();
-      setListData(result);
+      const result = await APIService.ListProducts();
+      setListData(result?.data);
     } catch (error) {}
   };
 
@@ -71,38 +76,6 @@ const Productions = () => {
     }
   };
 
-  const listImg = [
-    {
-      img: lap,
-      url: "",
-    },
-    {
-      img: lap1,
-      url: "",
-    },
-    {
-      img: lap2,
-      url: "",
-    },
-    {
-      img: lap3,
-      url: "",
-    },
-
-    {
-      img: lap4,
-      url: "",
-    },
-    {
-      img: lap5,
-      url: "",
-    },
-    {
-      img: lap6,
-      url: "",
-    },
-  ];
-
   return (
     <>
       <div className={style.breadcrumb}>
@@ -126,7 +99,7 @@ const Productions = () => {
         <div>/</div>
         {inforLaptop?.map((e, key) => (
           <div className={style.breadcrumb_items} key={key}>
-            {e?.title}
+            {e?.cpu}
           </div>
         ))}
       </div>
@@ -242,7 +215,7 @@ const Productions = () => {
           ))}
         </div>
       </div>
-      <RelatedProductions listRelatedItem={listRelatedItem} />
+      {/* <RelatedProductions listRelatedItem={listRelatedItem} /> */}
     </>
   );
 };

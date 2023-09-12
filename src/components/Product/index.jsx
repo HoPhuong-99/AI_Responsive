@@ -10,14 +10,14 @@ const Produce = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [listData, setListData] = useState();
+  const [listData, setListData] = useState([]);
 
   let listProductions = listData?.slice(0, 8);
 
   const fetchData = async () => {
     try {
-      const data = await APIService.get_ListData();
-      setListData(data);
+      const data = await APIService.ListProducts();
+      setListData(data?.data);
     } catch (error) {}
   };
   useEffect(() => {
@@ -32,7 +32,10 @@ const Produce = () => {
             <Col
               span={6}
               key={item.id}
-              onClick={() => navigate(`/productions/${item.id}`)}
+              onClick={() => {
+                navigate(`/productions/${item.id}`);
+                localStorage.setItem("idProduct", item?.productId);
+              }}
             >
               <div className={style.infor_laptop}>
                 <Row gutter={[20, 20]} justify={"center"}>

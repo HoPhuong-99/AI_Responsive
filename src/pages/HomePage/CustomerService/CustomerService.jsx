@@ -9,7 +9,6 @@ import { APIService } from "../../../services/apiService";
 
 const CustomerService = () => {
   const [listService, setListService] = useState([]);
-  console.log("list", listService);
 
   const getDataService = async () => {
     try {
@@ -32,8 +31,8 @@ const CustomerService = () => {
         <span className={style.line_title}></span>
       </div>
       <div className={style.content_service}>
-        {listService?.map((e) => (
-          <div className={style.item_sevice}>
+        {listService?.map((e, key) => (
+          <div className={style.item_sevice} key={key}>
             <img src={updatepc} alt="" className={style.img_service} />
             <h3 className={style.title_content_service}>{e?.serviceName}</h3>
             <span>{e?.price}đ</span>

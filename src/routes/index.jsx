@@ -4,6 +4,7 @@ import Mainlayout from "../layouts/MainLayout";
 import HomePage from "../pages/HomePage";
 import Cart from "../pages/CartPage";
 import Productions from "../pages/ProductionPage";
+import Produce from "../components/Product";
 import Collections from "../pages/CollectionPage";
 import Search from "../pages/SearchPage/Search";
 
@@ -13,6 +14,7 @@ const Router = () => (
       <Route path="/" element={<Mainlayout />}>
         <Route index element={<HomePage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/production" element={<Produce />} />
         <Route path="/productions/:id" element={<Productions />} />
         <Route path="/collections" element={<Collections />} />
         <Route path="/search" element={<Search />} />
