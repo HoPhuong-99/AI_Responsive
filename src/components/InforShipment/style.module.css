@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: whitesmoke;
+  height: 15vh;
+  max-height: 15vh;
+  border-radius: 5px;
+}
+
+.infor_Payment {
+  width: 80%;
+  max-width: 80%;
+  display: grid;
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.title_Payment {
+  color: red;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.infor_UserPayment {
+    line-height: normal;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.infor_UserPayment {
+  line-height: normal;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+
+

@@ -1,15 +1,15 @@
 import React from "react";
-import style from "./style.module.css";
+import ProductPayment from "../../components/ProductPayment";
 import InforShipment from "../../components/InforShipment";
+import style from "./style.module.css";
 
 const PaymentPage = () => {
   return (
     <>
-      <div>
-        <h1> Thanh toán</h1>
-        <div>
-          <InforShipment />
-        </div>
+      <div className={style.container}>
+        {/* <h1> Thanh toán</h1> */}
+        <InforShipment />
+        <ProductPayment />
       </div>
     </>
   );

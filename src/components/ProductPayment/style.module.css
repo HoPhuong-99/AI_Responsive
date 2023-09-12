@@ -1,0 +1,16 @@
+.infor_Product {
+  width: 100%;
+}
+
+.content_Produt{
+    display: grid;
+    grid-template-rows: auto;
+    gap: 20px;
+}
+
+.noteMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
