@@ -37,7 +37,7 @@ const Cart = () => {
   const navigate = useNavigate();
   return (
     <div className={style.container_pay}>
-      <div className={style.wrap_btn}>
+      {/* <div className={style.wrap_btn}>
         {current < steps.length - 1 && (
           <Button type="primary" onClick={() => next()}>
             Next
@@ -59,7 +59,8 @@ const Cart = () => {
         <Steps current={current} items={steps} />
         <div className="wrap-children-pay">{wrapSteps[current]}</div>
       </div>
-      <button onClick={() => navigate("/payment")}>Confirm</button>
+      <button onClick={() => navigate("/payment")}>Confirm</button> */}
+      <CartPay />
     </div>
   );
 };
