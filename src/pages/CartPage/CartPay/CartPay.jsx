@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Checkbox, Input } from "antd";
+import { Button, Checkbox, Col, Input, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DeleteOutlined,
@@ -85,50 +85,95 @@ const Cartpay = () => {
     <>
       {listDataCart.length > 0 ? (
         <>
+          <Col span={24}>
+            <Row>
+              <Col span={12}>
+                <div className={style.content_Produt}>
+                  <p>Sản phẩm</p>
+                </div>
+              </Col>
+              <Col span={4}>
+                <div className={style.content_Produt}>
+                  <p>Đơn giá</p>
+                </div>
+              </Col>
+              <Col span={4}>
+                <div className={style.content_Produt}>
+                  <p>Số lượng</p>
+                </div>
+              </Col>
+              <Col span={4}>
+                <div className={style.content_Produt}>
+                  <p>Thành tiền</p>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+
           <div className={style.hero_pay}>
             {listDataCart?.map((i, index) => (
               <div className={style.wrap_cartpay} key={i.id}>
-                <Checkbox
-                  onChange={() => handleCheckbox(i.id)}
-                  checked={selectedItems.includes(i.id)}
-                />
-                <div className={style.img_pay}>
-                  <img className={style.img_item} src={i?.image} alt="" />
-                  <div
-                    className={style.delete_pay_item}
-                    onClick={() => deleteItem(i.id)}
-                  >
-                    <DeleteOutlined />
-                    <span className={style.sub_title_delete}>Delete</span>
-                  </div>
-                </div>
                 <div className={style.name_cart}>
                   <h3 className={style.title_cart}>{i?.title}</h3>
                 </div>
-                <div className={style.price_cart}>
-                  <span className={style.price_new}>
-                    {i.price * i.quantily}
-                  </span>
-                  <div className={style.btn_qualyti}>
-                    {i.quantily <= 1 ? (
-                      <Button>-</Button>
-                    ) : (
-                      <Button
-                        onClick={() =>
-                          updateQuantity(i.id, quantities[index] - 1)
-                        }
-                      >
-                        -
-                      </Button>
-                    )}
-                    <Input className={style.input_qualyty} value={i.quantily} />
-                    <Button
-                      onClick={() => updateQuantity(i.id, i.quantily + 1)}
-                    >
-                      +
-                    </Button>
-                  </div>
-                </div>
+                <div className={style.price_cart}></div>
+                <Col span={24}>
+                  <Row>
+                    <Col span={12} className={style.product_Name}>
+                      <Checkbox
+                        onChange={() => handleCheckbox(i.id)}
+                        checked={selectedItems.includes(i.id)}
+                      />
+                      <div className={style.img_pay}>
+                        <img className={style.img_item} src={i?.image} alt="" />
+                        <div
+                          className={style.delete_pay_item}
+                          onClick={() => deleteItem(i.id)}
+                        >
+                          <DeleteOutlined />
+                          <span className={style.sub_title_delete}>Delete</span>
+                        </div>
+                      </div>
+                      <p>{i.productName}</p>
+                    </Col>
+                    <Col span={4}>
+                      <div className={style.content_Produt}>
+                        <p>{i.price}</p>
+                      </div>
+                    </Col>
+                    <Col span={4}>
+                      <div className={style.content_Produt}>
+                        <div className={style.btn_qualyti}>
+                          {i.quantily <= 1 ? (
+                            <Button>-</Button>
+                          ) : (
+                            <Button
+                              onClick={() =>
+                                updateQuantity(i.id, quantities[index] - 1)
+                              }
+                            >
+                              -
+                            </Button>
+                          )}
+                          <Input
+                            className={style.input_qualyty}
+                            value={i.quantily}
+                          />
+                          <Button
+                            onClick={() => updateQuantity(i.id, i.quantily + 1)}
+                          >
+                            +
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col span={4}>
+                      <span className={style.price_new}>
+                        {i.price * i.quantily}
+                      </span>
+                    </Col>
+                  </Row>
+                </Col>
               </div>
             ))}
             <div className={style.order}>
@@ -137,7 +182,12 @@ const Cartpay = () => {
                 <span className={style.sub_price}>{totalPrice}</span>
               </div>
             </div>
-            <Button className={style.btn_oder} danger type="primary">
+            <Button
+              className={style.btn_oder}
+              danger
+              type="primary"
+              onClick={() => navigate(`/payment`)}
+            >
               Order Now
             </Button>
 
