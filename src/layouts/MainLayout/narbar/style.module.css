@@ -9,6 +9,7 @@
   position: sticky;
   z-index: 1;
   top: 0;
+  overflow-x: hidden;
 }
 
 .logo_narbar {

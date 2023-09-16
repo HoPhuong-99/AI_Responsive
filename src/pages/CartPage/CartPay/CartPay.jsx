@@ -202,7 +202,11 @@ const Cartpay = () => {
       ) : (
         <div className={style.cart_emty}>
           <span className={style.sub_emty}>Giỏ hàng của bạn đang trống</span>
-          <Button className={style.btn_emty} onClick={() => navigate(`/`)}>
+          <Button
+            className={style.btn_emty}
+            onClick={() => navigate(`/payment`)}
+            // onClick={() => navigate(`/`)}
+          >
             Tiếp tục mua hàng
           </Button>
         </div>
