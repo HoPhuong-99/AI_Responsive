@@ -28,3 +28,7 @@
 input {
   width: 50%;
 }
+
+.form_PayOrder {
+  margin: 0px !important;
+}
