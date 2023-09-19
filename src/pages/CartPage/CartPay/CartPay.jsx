@@ -109,7 +109,6 @@ const Cartpay = () => {
               </Col>
             </Row>
           </Col>
-
           <div className={style.hero_pay}>
             {listDataCart?.map((i, index) => (
               <div className={style.wrap_cartpay} key={i.id}>

@@ -1,5 +1,7 @@
 .container_pay {
   margin: auto;
+  border: 1px solid;
+  border-radius: 20px;
 }
 
 .wrap_btn {
