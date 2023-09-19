@@ -84,140 +84,145 @@ const ProductPayment = () => {
     <>
       <div className={style.container}>
         <div className="formOrder">
-          <Col xl={24} lg={22} md={20}>
-            <Row justify={"center"}>
-              <Form
-                form={form}
-                className="formOrder"
-                size="middle"
-                labelCol={{ span: 12 }}
-                onFinish={submitFormOrder}
-              >
-                <Row gutter={[20, 20]}>
-                  <Col span={24}>
-                    <Row>
-                      <Col span={12}>
-                        <div className={style.content_Produt}>
-                          <p>Sản phẩm</p>
-                        </div>
-                      </Col>
-                      <Col span={4}>
-                        <div className={style.content_Produt}>
-                          <p>Đơn giá</p>
-                        </div>
-                      </Col>
-                      <Col span={4}>
-                        <div className={style.content_Produt}>
-                          <p>Số lượng</p>
-                        </div>
-                      </Col>
-                      <Col span={4}>
-                        <div className={style.content_Produt}>
-                          <p>Thành tiền</p>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Col>
-
-                  <Col span={24}>
-                    {listOrder.map((item) => (
-                      <Row key={item.id}>
-                        <Col span={12}>
+          <Col xxl={24} xl={24} lg={22} md={20}>
+            <Form
+              form={form}
+              className="formOrder"
+              size="middle"
+              labelCol={{ span: 12 }}
+              onFinish={submitFormOrder}
+            >
+              <Row justify={"space-between"}>
+                <Col span={19} className={style.content_ProductPay}>
+                  <Row justify={"center"}>
+                    <Col span={24} className={style.payment_title}>
+                      <Row justify={"center"}>
+                        <Col span={10}>
                           <div className={style.content_Produt}>
-                            <p>{item.name}</p>
+                            <p>Sản phẩm</p>
                           </div>
                         </Col>
                         <Col span={4}>
                           <div className={style.content_Produt}>
-                            <p>{item.price}</p>
+                            <p>Đơn giá</p>
                           </div>
                         </Col>
                         <Col span={4}>
                           <div className={style.content_Produt}>
-                            <p>{item.number}</p>
+                            <p>Số lượng</p>
                           </div>
                         </Col>
                         <Col span={4}>
                           <div className={style.content_Produt}>
-                            <p>{item.totalPrice}</p>
+                            <p>Thành tiền</p>
                           </div>
                         </Col>
                       </Row>
-                    ))}
-                  </Col>
-                  <Col span={24}>
-                    <Row gutter={[20, 20]}>
-                      <Col span={8}>
-                        <Form.Item name="note" label="Lưu ý cho shop">
-                          <Input.TextArea showCount maxLength={100} />
-                        </Form.Item>
-                      </Col>
-                      <Col span={10}>
-                        <Row gutter={[10, 10]}>
-                          <Col span={24}>
-                            <Form.Item
-                              name="selectDate"
-                              label="Chọn thời gian vận chuyển : "
-                              {...config}
-                            >
-                              <DatePicker
-                                onChange={PickDate}
-                                format={"DD-MM-YYYY"}
-                                locale
-                                showToday={true}
-                                // defaultValue={moment()}
-                              />
-                            </Form.Item>
-                            <Form.Item
-                              name="dateShip"
-                              label="Ngày dự kiến "
-                              initialValue={dateShip}
-                            >
-                              <p>{dateShip}</p>
-                            </Form.Item>
-                            <Form.Item
-                              name="optionPay"
-                              label="Chọn phương thức thanh toán :"
-                              rules={[
-                                {
-                                  required: true,
-                                  message: "Please select gender!",
-                                },
-                              ]}
-                            >
-                              <Select placeholder="Chọn phương thức !">
-                                <Option value="cash">Tiền Mặt</Option>
-                                <Option value="bank">Chuyển Khoản</Option>
-                              </Select>
-                            </Form.Item>
+                    </Col>
+
+                    <Col span={24} 
+                    
+                    className={style.payment_listProduct}
+                    
+                    >
+                      {listOrder.map((item) => (
+                        <Row key={item.id} justify={"center"}>
+                          <Col span={10}>
+                            <div className={style.content_Produt}>
+                              <p>{item.name}</p>
+                            </div>
+                          </Col>
+                          <Col span={4}>
+                            <div className={style.content_Produt}>
+                              <p>{item.price}</p>
+                            </div>
+                          </Col>
+                          <Col span={4}>
+                            <div className={style.content_Produt}>
+                              <p>{item.number}</p>
+                            </div>
+                          </Col>
+                          <Col span={4}>
+                            <div className={style.content_Produt}>
+                              <p>{item.totalPrice}</p>
+                            </div>
                           </Col>
                         </Row>
-                      </Col>
-
-                      <Col span={4}>
-                        <Row justify={"center"} gutter={[20, 20]}>
-                          <Form.Item
-                            name="total"
-                            label="Tổng Tiền :"
-                            labelCol={20}
-                          >
-                            <p>{totalPriceOder}</p>
+                      ))}
+                    </Col>
+                    <Col span={22}>
+                      <Row gutter={[20, 20]} className={style.note_Shop}>
+                        <Col span={12}>
+                          <Form.Item name="note" label="Lưu ý cho shop">
+                            <Input.TextArea showCount maxLength={100} />
                           </Form.Item>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-
-                <Row justify={"center"}>
-                  <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                      Register
-                    </Button>
-                  </Form.Item>
-                </Row>
-              </Form>
-            </Row>
+                        </Col>
+                        <Col span={12}>
+                          <Row gutter={[10, 10]}>
+                            <Col span={24}>
+                              <Form.Item
+                                name="selectDate"
+                                label="Chọn thời gian vận chuyển : "
+                                {...config}
+                              >
+                                <DatePicker
+                                  onChange={PickDate}
+                                  format={"DD-MM-YYYY"}
+                                  locale
+                                  showToday={true}
+                                  // defaultValue={moment()}
+                                />
+                              </Form.Item>
+                              <Form.Item
+                                name="dateShip"
+                                label="Ngày dự kiến "
+                                initialValue={dateShip}
+                              >
+                                <p>{dateShip}</p>
+                              </Form.Item>
+                              <Form.Item
+                                name="optionPay"
+                                label="Chọn phương thức thanh toán :"
+                                rules={[
+                                  {
+                                    required: true,
+                                    message: "Please select gender!",
+                                  },
+                                ]}
+                              >
+                                <Select placeholder="Chọn phương thức !">
+                                  <Option value="cash">Tiền Mặt</Option>
+                                  <Option value="bank">Chuyển Khoản</Option>
+                                </Select>
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col span={4} className={style.Total}>
+                  <Row justify={"center"} gutter={[20, 20]}>
+                    <Form.Item
+                      name="total"
+                      label="Tổng Tiền :"
+                      labelCol={20}
+                      className={style.title_Total}
+                    >
+                      <p>{totalPriceOder}</p>
+                    </Form.Item>
+                  </Row>
+                  <Row justify={"center"} gutter={[20, 20]}>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit">
+                        Check Out
+                      </Button>
+                    </Form.Item>
+                  </Row>
+                </Col>
+              </Row>
+            </Form>
           </Col>
         </div>
       </div>
