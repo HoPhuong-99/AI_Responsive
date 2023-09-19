@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/swiper-bundle.css";
 
 import { Pagination, Navigation } from "swiper/modules";
 import dataBaner from "../../../database/laptop";
@@ -10,7 +11,7 @@ import style from "./style.module.css";
 
 const IntroHome = () => {
   return (
-    <>
+    <div className={style.wrap_intro_home}>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -28,7 +29,7 @@ const IntroHome = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 

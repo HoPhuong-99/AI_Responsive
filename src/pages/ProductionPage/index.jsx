@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Rate, Button, Input } from "antd";
+import { Rate, Button, Input, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,15 +12,31 @@ import { APIService } from "../../services/apiService";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
-import lap from "../../assests/swiper/lap.png";
-import lap1 from "../../assests/swiper/lap1.png";
-import lap2 from "../../assests/swiper/lap2.png";
-import lap3 from "../../assests/swiper/lap3.png";
-import lap4 from "../../assests/swiper/lap4.png";
-import lap5 from "../../assests/swiper/lap5.png";
-import lap6 from "../../assests/swiper/lap6.png";
+import hinh1 from "../../assests/swiper/a.jpg";
+import hinh2 from "../../assests/swiper/b.jpg";
+import hinh3 from "../../assests/swiper/c.jpg";
+import hinh4 from "../../assests/swiper/d.jpg";
+import hinh5 from "../../assests/swiper/e.png";
 import RelatedProductions from "../../components/Product/RelatedProduct";
 const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+
+const columns = [
+  {
+    title: "No",
+    dataIndex: "no",
+    key: "no",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Profile",
+    dataIndex: "profile",
+    key: "profile",
+  },
+];
 
 const Productions = () => {
   const getID = localStorage.getItem("idProduct");
@@ -74,8 +90,61 @@ const Productions = () => {
     }
   };
 
+  const dataSource = [
+    {
+      no: 1,
+      name: "cpu",
+      profile: listData?.[0]?.cpu,
+    },
+    {
+      no: 2,
+      name: "details",
+      profile: listData?.[0]?.details,
+    },
+    {
+      no: 3,
+      name: "display",
+      profile: listData?.[0]?.display,
+    },
+    {
+      no: 4,
+      name: "memory",
+      profile: listData?.[0]?.memory,
+    },
+    {
+      no: 5,
+      name: "operatingSystem",
+      profile: listData?.[0]?.operatingSystem,
+    },
+    {
+      no: 6,
+      name: "productName",
+      profile: listData?.[0]?.productName,
+    },
+    {
+      no: 7,
+      name: "ram",
+      profile: listData?.[0]?.ram,
+    },
+    {
+      no: 8,
+      name: "size",
+      profile: listData?.[0]?.size,
+    },
+    {
+      no: 9,
+      name: "vga",
+      profile: listData?.[0]?.vga,
+    },
+    {
+      no: 10,
+      name: "weight",
+      profile: listData?.[0]?.weight,
+    },
+  ];
+
   return (
-    <>
+    <div className={style.hero}>
       <div className={style.breadcrumb}>
         <div className={style.breadcrumb_home} onClick={() => navigate("/")}>
           <span>
@@ -97,7 +166,7 @@ const Productions = () => {
         <div>/</div>
         {inforLaptop?.map((e, key) => (
           <div className={style.breadcrumb_items} key={key}>
-            {e?.cpu}
+            {e?.productName}
           </div>
         ))}
       </div>
@@ -143,7 +212,7 @@ const Productions = () => {
           {inforLaptop?.map((item, key) => (
             <div className={style.productions_items} key={key}>
               <div className={style.productions_items_right}>
-                <h1 className={style.title_productions}>{item?.title}</h1>
+                <h1 className={style.title_productions}>{item?.cpu}</h1>
                 <div className={style.productions_start}>
                   <Rate
                     tooltips={desc}
@@ -186,7 +255,7 @@ const Productions = () => {
                       +
                     </Button>
                     <span className={style.qualyti}>
-                      Quality: {item?.rating?.count}
+                      Quality: {item?.discount}
                     </span>
                   </div>
                 </div>
@@ -213,8 +282,62 @@ const Productions = () => {
           ))}
         </div>
       </div>
+      <div className={style.wrap_profile_product}>
+        <div className={style.wrap_profile_left}>
+          <h3 className={style.sub_title_profile}>Mô tả sản phẩm</h3>
+          <h2 className={style.title_product}>Thông số sản phẩm:</h2>
+          <div className={style.table_profile}>
+            <Table
+              dataSource={dataSource}
+              columns={columns}
+              size="small"
+              tableLayout="fixed"
+            />
+          </div>
+        </div>
+        <div className={style.wrap_profile_right}>
+          <h1 className={style.title_profile_right}>Tin tức về sản phẩm</h1>
+          <div className={style.news}>
+            <div className={style.news_items}>
+              <img className={style.img_news} src={hinh1} alt="" />
+              <span>
+                Top 7 thông tin đáng chú ý nhất tại buổi ra mắt Apple iPhone 15
+              </span>
+            </div>
+            <div className={style.news_items}>
+              <img className={style.img_news} src={hinh2} alt="" />
+              <span>
+                Microsoft Paint sắp sở hữu tính năng được dân Photoshop xài
+                nhiều nhất: tách nền
+              </span>
+            </div>
+            <div className={style.news_items}>
+              <img className={style.img_news} src={hinh3} alt="" />
+              <span>
+                Trải nghiệm AMD RX 7700 XT - Card đồ họa tầm trung với 12 GB
+                VRAM, chiến game AAA trên 100 fps ở FullHD
+              </span>
+            </div>
+            <div className={style.news_items}>
+              <img className={style.img_news} src={hinh4} alt="" />
+              <span>
+                HP sẽ chuyển địa điểm lắp ráp PC sang Việt Nam, Thái Lan, Mexico
+              </span>
+            </div>
+            <div className={style.news_items}>
+              <img className={style.img_news} src={hinh5} alt="" />
+              <span>
+                Card NVIDIA GeForce RTX 3090 SUPER Founders Edition bất ngờ lộ
+                diện trên Taobao
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={style.assess}></div>
+      <div className={style.reviews}></div>
       {/* <RelatedProductions listRelatedItem={listRelatedItem} /> */}
-    </>
+    </div>
   );
 };
 
