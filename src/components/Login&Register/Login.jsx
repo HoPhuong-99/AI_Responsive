@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { Button, Checkbox, Form, Input, message } from "antd";
 
 import style from "./style.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const { setCheckRegister, checkRegister } = props;
   const [messageApi, contextHolder] = message.useMessage();
   const [statusLogin, setStatusLogin] = useState(true);
   const key = "updatable";
+
+  const navigate = useNavigate();
 
   const [form] = Form.useForm();
   const onFinishFailed = (errorInfo) => {
@@ -118,14 +121,16 @@ const Login = (props) => {
                 span: 12,
               }}
             >
-              <Button
+              {/* <Button
                 type="primary"
                 htmlType="submit"
                 className={style.btn_login}
                 onClick={openMessage}
               >
                 Login
-              </Button>
+              </Button> */}
+
+              <Button onClick={() => navigate("/user")}>Login</Button>
             </Form.Item>
           </Form>
         </div>

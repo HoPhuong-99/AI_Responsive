@@ -8,6 +8,7 @@ import Produce from "../components/Product";
 import Collections from "../pages/CollectionPage";
 import Search from "../pages/SearchPage/Search";
 import PaymentPage from "../pages/PaymentPage";
+import User from "../pages/User";
 
 const Router = () => (
   <React.Suspense>
@@ -20,6 +21,7 @@ const Router = () => (
         <Route path="/collections" element={<Collections />} />
         <Route path="/search" element={<Search />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/user" element={<User />} />
       </Route>
       <Route path="/" element></Route>
     </Routes>
