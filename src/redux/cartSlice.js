@@ -12,7 +12,6 @@ export const cartSlice = createSlice({
     },
 
     itemListCart: (state, action) => {
-      console.log(state);
       state.listCart = action.payload;
     },
   },
