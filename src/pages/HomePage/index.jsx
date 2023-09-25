@@ -27,15 +27,12 @@ const HomePage = () => {
     <div className={style.container}>
       <IntroHome />
       <div className={style.listItem}>
-        <p className={style.titleProduct}>Our Product</p>
-        {/* <Produce /> */}
         <Category />
         <p onClick={() => navigate(`/collections`)} className={style.seeAll}>
           Show All
         </p>
       </div>
       <CustomerService />
-      {/* <Customercare /> */}
     </div>
   );
 };

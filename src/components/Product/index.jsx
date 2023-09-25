@@ -27,35 +27,21 @@ const Produce = () => {
   return (
     <div className={style.wrap_produce}>
       <Col xxl={24}>
-        <Row gutter={[30, 30]}>
+        <Row gutter={[20, 20]}>
           {listProductions?.map((item) => (
             <Col
-              span={6}
+              span={4}
               key={item.id}
               onClick={() => {
                 navigate(`/productions/${item.productId}`);
-                localStorage.setItem("idProduct", item?.productId);
               }}
             >
               <div className={style.infor_laptop}>
-                <Row gutter={[20, 20]} justify={"center"}>
-                  <Col span={20}>
-                    <img src={item?.image} alt="" />
-                  </Col>
-                  <Row>
-                    <Col span={22}>
-                      <h1 className={style.produce_title}>{item?.title}</h1>
-                    </Col>
-                    <Col span={22}>
-                      <span className={style.produce_price}>
-                        {item?.price} $
-                      </span>
-                    </Col>
-                    <Col span={22}>
-                      <span className={style.sale}>{item?.category}</span>
-                    </Col>
-                  </Row>
-                </Row>
+                <div className={style.box_Product}>
+                  <img src={item?.image} alt="" />
+                </div>
+                <h1 className={style.produce_title}>{item?.title}</h1>
+                <span className={style.produce_price}>{item?.price} $</span>
               </div>
             </Col>
           ))}

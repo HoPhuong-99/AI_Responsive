@@ -120,11 +120,7 @@ const ProductPayment = () => {
                       </Row>
                     </Col>
 
-                    <Col span={24} 
-                    
-                    className={style.payment_listProduct}
-                    
-                    >
+                    <Col span={24} className={style.payment_listProduct}>
                       {listOrder.map((item) => (
                         <Row key={item.id} justify={"center"}>
                           <Col span={10}>

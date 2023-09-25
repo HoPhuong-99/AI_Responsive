@@ -1,40 +1,47 @@
 .wrap_category {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-bottom: 10px;
 }
 
 .title_category {
-    background: #fff;
-    height: 3.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, .05);
+  height: 3.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .img_category {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .containerBanner {
-    width: 114px;
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.87);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    display: block;
-    position: relative;
-    transition: transform 0.1s cubic-bezier(0.4, 0, 0.6, 1) 0s, box-shadow 0.1s cubic-bezier(0.4, 0, 0.6, 1) 0s;
-    cursor: pointer;
+  width: 114px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  display: block;
+  position: relative;
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.6, 1) 0s,
+    box-shadow 0.1s cubic-bezier(0.4, 0, 0.6, 1) 0s;
+  cursor: pointer;
 }
 
 .containerBanner:hover {
-    transform: translateZ(0);
-    z-index: 1;
-    border-color: rgba(0, 0, 0, .12);
-    border-width: 1px;
-    box-shadow: 0 0 0.8125rem 0 rgba(0, 0, 0, .05);
+  transform: translateZ(0);
+  z-index: 1;
+  border-color: rgba(0, 0, 0, 0.12);
+  border-width: 1px;
+  box-shadow: 0 0 0.8125rem 0 rgba(0, 0, 0, 0.05);
 }
 
 .sub_title_category {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
