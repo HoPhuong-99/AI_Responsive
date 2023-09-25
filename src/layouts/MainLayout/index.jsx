@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Narbar from "./narbar";
 import { Col } from "antd";
 import style from "./style.module.css";
+import Footer from "./footer";
 
 const Mainlayout = () => {
   return (
@@ -13,6 +14,7 @@ const Mainlayout = () => {
           <Outlet />
         </Col>
       </div>
+      <Footer />
     </>
   );
 };
