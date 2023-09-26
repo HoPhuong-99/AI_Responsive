@@ -26,18 +26,19 @@ const CustomerService = () => {
   return (
     <div className={style.wrap_service}>
       <div className={style.wrap_title_service}>
-        <span className={style.line_title}></span>
-        <h2 className={style.title_service}>Dịch Vụ</h2>
-        <span className={style.line_title}></span>
+        <h2 className={style.title_service}>Our extra services</h2>
       </div>
       <div className={style.content_service}>
         {listService?.map((e, key) => (
           <div className={style.item_sevice} key={key}>
             <img src={updatepc} alt="" className={style.img_service} />
             <h3 className={style.title_content_service}>{e?.serviceName}</h3>
-            <span>{e?.price}đ</span>
-            <span className={style.time_service}>14/08/2023</span>
-            <span className={style.line}></span>
+          </div>
+        ))}
+        {listService?.map((e, key) => (
+          <div className={style.item_sevice} key={key}>
+            <img src={updatepc} alt="" className={style.img_service} />
+            <h3 className={style.title_content_service}>{e?.serviceName}</h3>
           </div>
         ))}
       </div>

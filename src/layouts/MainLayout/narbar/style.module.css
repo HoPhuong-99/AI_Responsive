@@ -2,7 +2,7 @@
   display: flex;
   height: 7vh;
   width: 100%;
-  background-color: red;
+  background-color: white;
   color: white;
   justify-content: center;
   align-items: center;
@@ -12,13 +12,24 @@
   overflow-x: hidden;
 }
 
+.element_narbar p {
+  color: var(--gray-500, #8b96a5);
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .logo_narbar {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.contents_narbar {
+.navbar_inputSearch {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,9 +37,10 @@
 
 .element_narbar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   position: relative;
   cursor: pointer;
   z-index: 0;

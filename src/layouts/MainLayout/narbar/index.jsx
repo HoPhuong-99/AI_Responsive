@@ -13,11 +13,9 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import shopping_cart from "../../../assests/sgv/shopping-cart-svgrepo-com.svg";
+import phone_contact from "../../../assests/sgv/phone-calling-svgrepo-com.svg";
 import user_login from "../../../assests/sgv/user-svgrepo-com.svg";
 import logo from "../../../assests/banner/logo.png";
-import menu_close from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
-import menu_open from "../../../assests/sgv/menu-alt-1-svgrepo-com.svg";
-import InputSearch from "../../../components/InputSearch";
 import { ItemsSearch, InputSearchItems } from "../../../redux/searchSlice";
 import Login from "../../../components/Login&Register/Login";
 import Register from "../../../components/Login&Register/Register";
@@ -306,7 +304,7 @@ const Narbar = () => {
   return (
     <div className={style.container_narbar}>
       <Col xxl={16} xl={20} lg={24} md={24}>
-        <Row>
+        <Row justify={"space-between"}>
           <Col span={4}>
             <div className={style.logo_narbar}>
               <NavLink to="/">
@@ -319,67 +317,60 @@ const Narbar = () => {
               </NavLink>
             </div>
           </Col>
-          <Col span={20}>
-            <Row gutter={(20, 20)}>
-              <Col span={24}>
-                <div className={style.contents_narbar}>
-                  <Col span={9}>
-                    <Search
-                      placeholder="input search text"
-                      onChange={(e) => onSearch(e.target.value)}
-                      enterButton
-                      allowClear
-                      className={style.input_search}
-                      onClick={() => setClickSearch(false)}
-                      onBlur={() => setClickSearch(true)}
-                    />
-                    {listSearch && clickSearch === false && (
-                      <div className={style.container_search}>
-                        {listData.map((e, key) => (
-                          <div
-                            className={style.wrap_items_search}
-                            key={key}
-                            onClick={(el) => {
-                              el.preventDefault();
-                              navigate(`/productions/${e?.id}`);
-                              setClickSearch(true);
-                            }}
-                          >
-                            <div className={style.items_search_left}>
-                              <span className={style.title_search}>
-                                {e?.title}
-                              </span>
-                              <span className={style.price_search}>
-                                {e?.price}
-                              </span>
-                            </div>
-                            <div className={style.items_search_right}>
-                              <img
-                                className={style.img_search}
-                                src={e?.image}
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                        ))}
-                        <div className={style.total_search}>
-                          {totalListSearch?.length !== 0 ? (
-                            <span
-                              onClick={() => {
-                                navigate("/search");
-                                setClickSearch(true);
-                              }}
-                            >
-                              Xem thêm {totalListSearch?.length} sản phẩm
-                            </span>
-                          ) : (
-                            <span>Không có sản phẩm nào</span>
-                          )}
-                        </div>
+          <Col span={12} className={style.navbar_inputSearch}>
+            <Col span={22}>
+              <Search
+                placeholder="input search text"
+                onChange={(e) => onSearch(e.target.value)}
+                enterButton
+                allowClear
+                className={style.input_search}
+                onClick={() => setClickSearch(false)}
+                onBlur={() => setClickSearch(true)}
+              />
+              {listSearch && clickSearch === false && (
+                <div className={style.container_search}>
+                  {listData.map((e, key) => (
+                    <div
+                      className={style.wrap_items_search}
+                      key={key}
+                      onClick={(el) => {
+                        el.preventDefault();
+                        navigate(`/productions/${e?.id}`);
+                        setClickSearch(true);
+                      }}
+                    >
+                      <div className={style.items_search_left}>
+                        <span className={style.title_search}>{e?.title}</span>
+                        <span className={style.price_search}>{e?.price}</span>
                       </div>
+                      <div className={style.items_search_right}>
+                        <img
+                          className={style.img_search}
+                          src={e?.image}
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  ))}
+                  <div className={style.total_search}>
+                    {totalListSearch?.length !== 0 ? (
+                      <span
+                        onClick={() => {
+                          navigate("/search");
+                          setClickSearch(true);
+                        }}
+                      >
+                        Xem thêm {totalListSearch?.length} sản phẩm
+                      </span>
+                    ) : (
+                      <span>Không có sản phẩm nào</span>
                     )}
-                  </Col>
-                  <Col span={3}>
+                  </div>
+                </div>
+              )}
+            </Col>
+            {/* <Col span={3}>
                     <div
                       className={style.element_narbar}
                       onClick={() => setVisible(!visible)}
@@ -631,50 +622,45 @@ const Narbar = () => {
                         ))}
                       </div>
                     )}
-                  </Col>
+                  </Col> */}
+          </Col>
 
-                  <Col span={3}>
-                    <NavLink className={style.element_narbar}>
-                      <p>Hotline</p>
-                    </NavLink>
-                  </Col>
-                  <Col span={3}>
-                    <NavLink className={style.element_narbar} to="/cart">
-                      <Badge count={cartQualyti}>
-                        <Avatar
-                          src={shopping_cart}
-                          shape="square"
-                          size="small"
-                        />
-                      </Badge>
-                      <p>Giỏ Hàng</p>
-                    </NavLink>
-                  </Col>
-                  <Col span={3}>
-                    <NavLink
-                      className={style.element_narbar}
-                      onClick={showModal}
-                    >
-                      <Avatar src={user_login} shape="square" size="small" />
-                      <p>Đăng nhập</p>
-                    </NavLink>
-                    <Modal
-                      open={open}
-                      confirmLoading={confirmLoading}
-                      onCancel={handleCancel}
-                      onOk={handleOk}
-                      footer={null}
-                      className={style.popup_Login}
-                      wrapClassName={style.popup_Login}
-                    >
-                      {!checkRegister ? (
-                        <Login setCheckRegister={setCheckRegister} />
-                      ) : (
-                        <Register setCheckRegister={setCheckRegister} />
-                      )}
-                    </Modal>
-                  </Col>
-                </div>
+          <Col span={6}>
+            <Row justify={"space-evenly"}>
+              <Col span={4}>
+                <NavLink className={style.element_narbar}>
+                  <Avatar src={phone_contact} shape="square" size="small" />
+                  <p>Hotline</p>
+                </NavLink>
+              </Col>
+              <Col span={4}>
+                <NavLink className={style.element_narbar} to="/cart">
+                  <Badge count={cartQualyti}>
+                    <Avatar src={shopping_cart} shape="square" size="small" />
+                  </Badge>
+                  <p>Giỏ Hàng</p>
+                </NavLink>
+              </Col>
+              <Col span={4}>
+                <NavLink className={style.element_narbar} onClick={showModal}>
+                  <Avatar src={user_login} shape="square" size="small" />
+                  <p>Đăng nhập</p>
+                </NavLink>
+                <Modal
+                  open={open}
+                  confirmLoading={confirmLoading}
+                  onCancel={handleCancel}
+                  onOk={handleOk}
+                  footer={null}
+                  className={style.popup_Login}
+                  wrapClassName={style.popup_Login}
+                >
+                  {!checkRegister ? (
+                    <Login setCheckRegister={setCheckRegister} />
+                  ) : (
+                    <Register setCheckRegister={setCheckRegister} />
+                  )}
+                </Modal>
               </Col>
             </Row>
           </Col>
