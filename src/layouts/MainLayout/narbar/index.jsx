@@ -15,6 +15,7 @@ import {
 import shopping_cart from "../../../assests/sgv/shopping-cart-svgrepo-com.svg";
 import phone_contact from "../../../assests/sgv/phone-calling-svgrepo-com.svg";
 import user_login from "../../../assests/sgv/user-svgrepo-com.svg";
+import favorite_item from "../../../assests/sgv/heart-svgrepo-com.svg";
 import logo from "../../../assests/banner/logo.png";
 import { ItemsSearch, InputSearchItems } from "../../../redux/searchSlice";
 import Login from "../../../components/Login&Register/Login";
@@ -631,6 +632,14 @@ const Narbar = () => {
                 <NavLink className={style.element_narbar}>
                   <Avatar src={phone_contact} shape="square" size="small" />
                   <p>Hotline</p>
+                </NavLink>
+              </Col>
+              <Col span={4}>
+                <NavLink className={style.element_narbar} to="/cart">
+                  <Badge count={cartQualyti}>
+                    <Avatar src={favorite_item} shape="square" size="small" />
+                  </Badge>
+                  <p>Yêu Thích</p>
                 </NavLink>
               </Col>
               <Col span={4}>

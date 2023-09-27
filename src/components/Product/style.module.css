@@ -5,9 +5,12 @@
   width: 100%;
   gap: 5px;
   justify-items: center;
-  border: 1px solid;
+  border: 1px solid #dee2e7;
   padding: 5px 0px;
-  border-radius: 20px;
+  border-radius: 10px;
+  fill: #fff;
+  stroke-width: 1px;
+  background: white;
 }
 
 .produce_title {
@@ -16,9 +19,8 @@
 }
 
 .box_Product {
-  border: 1px solid #ccc;
   height: auto;
-  margin: 10px auto;
+  margin: 5px auto;
   overflow: hidden;
   position: relative;
   width: 180px;
@@ -59,4 +61,47 @@ img {
 .title_RelatedProduct {
   display: flex;
   justify-content: center;
+}
+
+.price_Product {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+}
+
+.name_Product {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 5px;
+  color: var(--base-color-gray-800, #606060);
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.2px;
+}
+
+.price {
+  color: var(--dark, #1c1c1c);
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.icon_Favorite {
+  color: #1c1c1c;
+  font-size: 35px;
+  font-weight: 300;
+}
+
+.bgDefaut_Icon {
+  font-size: 35px;
+}
+
+.bgFavotire_Icon {
+  font-size: 35px;
+  fill: red;
 }
