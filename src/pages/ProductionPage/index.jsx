@@ -34,19 +34,19 @@ const columns = [
 ];
 
 const Productions = () => {
-  const getID = localStorage.getItem("idProduct");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const idLaptop = parseInt(id);
   const [listData, setListData] = useState();
-  console.log("list", listData);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const [value, setValue] = useState(3);
   const [count, setCount] = useState(1);
 
-  let inforLaptop = listData?.filter((item) => item?.productId == getID);
+  let inforLaptop = listData?.filter((item) => item?.productId === idLaptop);
+
+  console.log(inforLaptop);
 
   let listCart = useSelector((state) => state.cartSlice.listCart);
 
@@ -62,23 +62,24 @@ const Productions = () => {
   }, []);
 
   const handleAddCart = async (item) => {
+    console.log(item);
     const addItem = listCart.find((prevItem) => prevItem?.id === item?.id);
-    try {
-      if (addItem) {
-        const updatedList = listCart.map((prevItem) =>
-          prevItem.id === item.id
-            ? { ...prevItem, quantily: prevItem.quantily + count }
-            : prevItem
-        );
-        dispatch(itemListCart(updatedList));
-        dispatch(setItemcart(count));
-      } else {
-        dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
-        dispatch(setItemcart(count));
-      }
-    } catch (error) {
-      console.error("Lỗi xảy ra khi thêm vào giỏ hàng:", error);
-    }
+    console.log(addItem);
+
+    // try {
+    //   if (addItem) {
+    //     const updatedList = listCart.map((prevItem) =>
+    //       prevItem.id === item.id
+    //         ? { ...prevItem, quantily: prevItem.quantily + count }
+    //         : prevItem
+    //     );
+    //     dispatch(itemListCart(updatedList));
+    //     dispatch(setItemcart(count));
+    //   } else {
+    //     dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
+    //     dispatch(setItemcart(count));
+    //   }
+    // } catch (error) {}
   };
 
   const dataSource = [
@@ -253,7 +254,7 @@ const Productions = () => {
                     className={style.productions_btn_items}
                     type={"primary"}
                     danger
-                    onClick={() => handleAddCart(item)}
+                    onClick={() => handleAddCart(item.productId)}
                   >
                     Add Cart
                   </Button>

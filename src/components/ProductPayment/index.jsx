@@ -79,8 +79,6 @@ const ProductPayment = () => {
       optionPay: optionPay,
       totalOrder: totalOrder,
     };
-
-    console.log(data);
   };
 
   return (

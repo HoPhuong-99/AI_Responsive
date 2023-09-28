@@ -9,20 +9,19 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import style from "./style.module.css";
-import lap1 from "../../../assests/produce/may1.jpg";
 import { itemListCart } from "../../../redux/cartSlice";
 
 const Cartpay = () => {
-  const CheckboxGroup = Checkbox.Group;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const listDataCart = useSelector((state) => state.cartSlice?.listCart);
   let allPriceItem = listDataCart.map((items) => items.price * items.quantily);
-  const [upDown, setUpDown] = useState(false);
-  const [count, setCount] = useState(0);
   const [total, setTotal] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
+  const [totalNumbItem, setTotalNumbItem] = useState(0);
+
+  console.log(listDataCart);
 
   const [quantities, setQuantities] = useState(
     listDataCart.map((item) => item.quantily)
@@ -52,8 +51,10 @@ const Cartpay = () => {
   const handleCheckbox = (itemId) => {
     if (selectedItems.includes(itemId)) {
       setSelectedItems(selectedItems.filter((id) => id !== itemId));
+      setTotalNumbItem(totalNumbItem - 1);
     } else {
       setSelectedItems([...selectedItems, itemId]);
+      setTotalNumbItem(totalNumbItem + 1);
     }
   };
 
@@ -85,11 +86,17 @@ const Cartpay = () => {
     <>
       {listDataCart.length > 0 ? (
         <>
-          <Col span={24}>
+          <Col span={22} className={style.nameTitle_cart}>
             <Row>
               <Col span={12}>
                 <div className={style.content_Produt}>
-                  <p>Sản phẩm</p>
+                  <p className={style.checkBox_All}>
+                    <Checkbox
+                      checked={selectAll}
+                      onChange={() => setSelectAll(!selectAll)}
+                    ></Checkbox>
+                    Sản phẩm
+                  </p>
                 </div>
               </Col>
               <Col span={4}>
@@ -112,11 +119,7 @@ const Cartpay = () => {
           <div className={style.hero_pay}>
             {listDataCart?.map((i, index) => (
               <div className={style.wrap_cartpay} key={i.id}>
-                <div className={style.name_cart}>
-                  <h3 className={style.title_cart}>{i?.title}</h3>
-                </div>
-                <div className={style.price_cart}></div>
-                <Col span={24}>
+                <Col span={22}>
                   <Row>
                     <Col span={12} className={style.product_Name}>
                       <Checkbox
@@ -177,25 +180,33 @@ const Cartpay = () => {
             ))}
             <div className={style.order}>
               <div className={style.total}>
-                <span className={style.sub_total}>Total Money</span>
-                <span className={style.sub_price}>{totalPrice}</span>
+                <span className={style.checkBox_All}>
+                  <Checkbox
+                    checked={selectAll}
+                    onChange={() => setSelectAll(!selectAll)}
+                  />
+                  Chọn tất cả
+                </span>
+                <span className={style.sub_total}>
+                  Tổng thanh toán ( {totalNumbItem} Sản phẩm)
+                </span>
+                <span className={style.sub_price}>
+                  vnd
+                  {totalNumbItem > 0 && (
+                    <span className={style.sub_price}> {totalPrice}</span>
+                  )}
+                </span>
+
+                <Button
+                  className={style.btn_oder}
+                  danger
+                  type="primary"
+                  onClick={() => navigate(`/payment`)}
+                >
+                  Order Now
+                </Button>
               </div>
             </div>
-            <Button
-              className={style.btn_oder}
-              danger
-              type="primary"
-              onClick={() => navigate(`/payment`)}
-            >
-              Order Now
-            </Button>
-
-            <Checkbox
-              checked={selectAll}
-              onChange={() => setSelectAll(!selectAll)}
-            >
-              Chọn tất cả
-            </Checkbox>
           </div>
         </>
       ) : (
