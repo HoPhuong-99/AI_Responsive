@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import style from "./style.module.css";
 import { Tree } from "antd";
+import { useEffect } from "react";
 
 const treeData = [
   {
@@ -11,31 +12,59 @@ const treeData = [
       {
         title: "Hồ sơ",
         key: "information",
-        onclick: () => console.log(1),
       },
       {
         title: "Địa chỉ",
         key: "address",
-        onclick: () => console.log(2),
       },
       {
         title: "Liên kết ngân hàng",
         key: "bank",
-        onclick: () => console.log(3),
       },
     ],
   },
 ];
 
 const User = () => {
+  const [keyTree, setKeyTree] = useState("information");
+
+  const handleNodeSelect = (selectedKeys, info) => {
+    if (info !== "") {
+      setKeyTree(info.node.key);
+    }
+  };
+
+  useEffect(() => {
+    console.log(keyTree);
+  }, [keyTree]);
+
+  let selectedComponent;
+  switch (keyTree) {
+    case "information":
+      selectedComponent = "hika";
+      break;
+    case "address":
+      selectedComponent = "hophuong";
+      break;
+    case "bank":
+      selectedComponent = "y nhi";
+      break;
+    default:
+      selectedComponent = null;
+  }
+
   return (
     <>
-      <Tree
-        showIcon
-        defaultExpandAll
-        defaultSelectedKeys={["information"]}
-        treeData={treeData}
-      />
+      <div>
+        <Tree
+          showIcon
+          defaultExpandAll
+          defaultSelectedKeys={["information"]}
+          treeData={treeData}
+          onSelect={handleNodeSelect}
+        />
+        {selectedComponent}
+      </div>
     </>
   );
 };
