@@ -22,7 +22,6 @@ const Produce = () => {
     try {
       const data = await APIService.ListProducts();
       setListData(data?.data);
-      console.log(data);
     } catch (error) {}
   };
   useEffect(() => {
@@ -44,9 +43,9 @@ const Produce = () => {
             <Col
               span={4}
               key={item.id}
-              // onClick={() => {
-              //   navigate(`/productions/${item.productId}`);
-              // }}
+              onClick={() => {
+                navigate(`/productions/${item.productId}`);
+              }}
               ref={ref}
             >
               <div className={style.infor_laptop}>
