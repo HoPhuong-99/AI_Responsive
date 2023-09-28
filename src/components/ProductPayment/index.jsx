@@ -7,8 +7,11 @@ import moment from "moment";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useForm } from "antd/es/form/Form";
 import { Option } from "antd/es/mentions";
+import { useNavigate } from "react-router-dom";
+import LoadingAnt from "../LoadingAnt/LoadingAnt";
 
 const ProductPayment = () => {
+  const navigate = useNavigate();
   const listOrder = [
     {
       id: 1,
@@ -81,39 +84,41 @@ const ProductPayment = () => {
   };
 
   return (
-    <>
-      <div className={style.container}>
+    <div className={style.container}>
+      {loading ? (
+        <LoadingAnt />
+      ) : (
         <div className="formOrder">
-          <Col xxl={24} xl={24} lg={22} md={20}>
-            <Form
-              form={form}
-              className="formOrder"
-              size="middle"
-              labelCol={{ span: 12 }}
-              onFinish={submitFormOrder}
-            >
-              <Row justify={"space-between"}>
-                <Col span={19} className={style.content_ProductPay}>
-                  <Row justify={"center"}>
+          <Form
+            form={form}
+            className="formOrder"
+            size="middle"
+            labelCol={{ span: 12 }}
+            onFinish={submitFormOrder}
+          >
+            <Row gutter={[20, 20]}>
+              <Col xxl={16} xl={18} lg={24} md={24} sm={24} xs={24}>
+                <div className={style.content_ProductPay}>
+                  <Row justify="center">
                     <Col span={24} className={style.payment_title}>
-                      <Row justify={"center"}>
-                        <Col span={10}>
-                          <div className={style.content_Produt}>
+                      <Row justify="center">
+                        <Col xxl={6} xl={6} lg={8} md={8} sm={4} xs={6}>
+                          <div className={style.content_ProductHeader}>
                             <p>Sản phẩm</p>
                           </div>
                         </Col>
-                        <Col span={4}>
-                          <div className={style.content_Produt}>
+                        <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={6}>
+                          <div className={style.content_ProductHeader}>
                             <p>Đơn giá</p>
                           </div>
                         </Col>
-                        <Col span={4}>
-                          <div className={style.content_Produt}>
+                        <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={6}>
+                          <div className={style.content_ProductHeader}>
                             <p>Số lượng</p>
                           </div>
                         </Col>
-                        <Col span={4}>
-                          <div className={style.content_Produt}>
+                        <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={6}>
+                          <div className={style.content_ProductHeader}>
                             <p>Thành tiền</p>
                           </div>
                         </Col>
@@ -122,38 +127,38 @@ const ProductPayment = () => {
 
                     <Col span={24} className={style.payment_listProduct}>
                       {listOrder.map((item) => (
-                        <Row key={item.id} justify={"center"}>
-                          <Col span={10}>
-                            <div className={style.content_Produt}>
+                        <Row key={item.id} justify="center">
+                          <Col xxl={6} xl={6} lg={8} md={8} sm={4} xs={6}>
+                            <div className={style.content_Product}>
                               <p>{item.name}</p>
                             </div>
                           </Col>
-                          <Col span={4}>
-                            <div className={style.content_Produt}>
+                          <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={6}>
+                            <div className={style.content_Product}>
                               <p>{item.price}</p>
                             </div>
                           </Col>
-                          <Col span={4}>
-                            <div className={style.content_Produt}>
+                          <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={6}>
+                            <div className={style.content_Product}>
                               <p>{item.number}</p>
                             </div>
                           </Col>
-                          <Col span={4}>
-                            <div className={style.content_Produt}>
+                          <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={6}>
+                            <div className={style.content_Product}>
                               <p>{item.totalPrice}</p>
                             </div>
                           </Col>
                         </Row>
                       ))}
                     </Col>
-                    <Col span={22}>
+                    <Col span={24}>
                       <Row gutter={[20, 20]} className={style.note_Shop}>
-                        <Col span={12}>
+                        <Col xxl={12} xl={12} lg={12} md={12} sm={24} xs={24}>
                           <Form.Item name="note" label="Lưu ý cho shop">
                             <Input.TextArea showCount maxLength={100} />
                           </Form.Item>
                         </Col>
-                        <Col span={12}>
+                        <Col xxl={12} xl={12} lg={12} md={12} sm={24} xs={24}>
                           <Row gutter={[10, 10]}>
                             <Col span={24}>
                               <Form.Item
@@ -163,7 +168,7 @@ const ProductPayment = () => {
                               >
                                 <DatePicker
                                   onChange={PickDate}
-                                  format={"DD-MM-YYYY"}
+                                  format="DD-MM-YYYY"
                                   locale
                                   showToday={true}
                                   // defaultValue={moment()}
@@ -182,7 +187,8 @@ const ProductPayment = () => {
                                 rules={[
                                   {
                                     required: true,
-                                    message: "Please select gender!",
+                                    message:
+                                      "Vui lòng chọn phương thức thanh toán!",
                                   },
                                 ]}
                               >
@@ -197,9 +203,11 @@ const ProductPayment = () => {
                       </Row>
                     </Col>
                   </Row>
-                </Col>
-                <Col span={4} className={style.Total}>
-                  <Row justify={"center"} gutter={[20, 20]}>
+                </div>
+              </Col>
+              <Col xxl={8} xl={6} lg={24} md={24} sm={24} xs={24}>
+                <div className={style.Total}>
+                  <Row justify="center" gutter={[20, 20]}>
                     <Form.Item
                       name="total"
                       label="Tổng Tiền :"
@@ -209,20 +217,24 @@ const ProductPayment = () => {
                       <p>{totalPriceOder}</p>
                     </Form.Item>
                   </Row>
-                  <Row justify={"center"} gutter={[20, 20]}>
+                  <Row justify="center" gutter={[20, 20]}>
                     <Form.Item>
-                      <Button type="primary" htmlType="submit">
-                        Check Out
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        onClick={() => navigate(`/success`)}
+                      >
+                        Thanh Toán
                       </Button>
                     </Form.Item>
                   </Row>
-                </Col>
-              </Row>
-            </Form>
-          </Col>
+                </div>
+              </Col>
+            </Row>
+          </Form>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 

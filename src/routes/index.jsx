@@ -9,6 +9,7 @@ import Collections from "../pages/CollectionPage";
 import Search from "../pages/SearchPage/Search";
 import PaymentPage from "../pages/PaymentPage";
 import User from "../pages/User";
+import Success from "../components/Success/Success";
 
 const Router = () => (
   <React.Suspense>
@@ -22,6 +23,7 @@ const Router = () => (
         <Route path="/search" element={<Search />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/user" element={<User />} />
+        <Route path="/success" element={<Success />} />
       </Route>
       <Route path="/" element></Route>
     </Routes>

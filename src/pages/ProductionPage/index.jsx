@@ -22,11 +22,6 @@ const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 
 const columns = [
   {
-    title: "No",
-    dataIndex: "no",
-    key: "no",
-  },
-  {
     title: "Name",
     dataIndex: "name",
     key: "name",
@@ -88,52 +83,42 @@ const Productions = () => {
 
   const dataSource = [
     {
-      no: 1,
       name: "cpu",
       profile: listData?.[0]?.cpu,
     },
     {
-      no: 2,
       name: "details",
       profile: listData?.[0]?.details,
     },
     {
-      no: 3,
       name: "display",
       profile: listData?.[0]?.display,
     },
     {
-      no: 4,
       name: "memory",
       profile: listData?.[0]?.memory,
     },
     {
-      no: 5,
       name: "operatingSystem",
       profile: listData?.[0]?.operatingSystem,
     },
     {
-      no: 6,
       name: "productName",
       profile: listData?.[0]?.productName,
     },
     {
-      no: 7,
       name: "ram",
       profile: listData?.[0]?.ram,
     },
     {
-      no: 8,
       name: "size",
       profile: listData?.[0]?.size,
     },
     {
-      no: 9,
       name: "vga",
       profile: listData?.[0]?.vga,
     },
     {
-      no: 10,
       name: "weight",
       profile: listData?.[0]?.weight,
     },

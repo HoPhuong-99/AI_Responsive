@@ -13,7 +13,9 @@ const Produce = () => {
   const dispatch = useDispatch();
 
   const [listData, setListData] = useState([]);
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState([]);
+  console.log("item", favorite);
+
   const ref = useRef();
 
   let listProductions = listData?.slice(0, 8);
@@ -30,10 +32,11 @@ const Produce = () => {
   }, []);
 
   const handleFavorite = (item) => {
-    const changeBg = listProductions.filter(
-      () => listProductions.productId === item,
-      setFavorite(!favorite)
-    );
+    // const changeBg = listProductions.filter(
+    //   () => listProductions.productId === item,
+    //   setFavorite(!favorite)
+    // );
+    setFavorite(item);
   };
 
   return (
@@ -61,7 +64,7 @@ const Produce = () => {
                   </span>
                   <AiOutlineHeart
                     className={
-                      favorite
+                      favorite === item?.productId
                         ? `${style.icon_Favorite} ${style.bgFavotire_Icon}`
                         : `${style.icon_Favorite} ${style.bgDefaut_Icon}`
                     }
