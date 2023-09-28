@@ -35,7 +35,7 @@ const ProductPayment = () => {
   const [dateSelect, setDateSelect] = useState(null);
   const [dateShip, setDateShip] = useState(null);
   const [payment, setPayment] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const config = {
     rules: [
       {
