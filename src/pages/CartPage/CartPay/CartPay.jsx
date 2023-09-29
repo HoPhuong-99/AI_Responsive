@@ -63,14 +63,16 @@ const Cartpay = () => {
     }
   };
 
-  const handleSelectAll = () => {
+  const handleSelectAll = (item) => {
     if (!selectAll) {
       const allProductIds = listDataCart.map((item) => item.productId);
       setSelectAll(true);
       setSelectedItems(allProductIds);
+      setCartItem(item);
     } else {
       setSelectAll(false);
       setSelectedItems([]);
+      setCartItem(null);
     }
   };
 
@@ -80,7 +82,6 @@ const Cartpay = () => {
   );
 
   useEffect(() => {
-    // Tạo một bản sao của selectedItems
     const newSelectedItems = [...selectedItems];
     if (
       newSelectedItems.length > 0 &&
@@ -100,9 +101,6 @@ const Cartpay = () => {
     }
   }, [selectAll, selectedItems]);
 
-  console.log(selectedItems);
-  console.log(cartItem);
-
   return (
     <>
       {listDataCart.length > 0 ? (
@@ -114,7 +112,7 @@ const Cartpay = () => {
                   <p className={style.checkBox_All}>
                     <Checkbox
                       checked={selectAll}
-                      onChange={() => handleSelectAll()}
+                      onChange={() => handleSelectAll(listDataCart)}
                     ></Checkbox>
                     Sản phẩm
                   </p>
@@ -211,7 +209,7 @@ const Cartpay = () => {
                 <span className={style.checkBox_All}>
                   <Checkbox
                     checked={selectAll}
-                    onChange={() => handleSelectAll()}
+                    onChange={() => handleSelectAll(listDataCart)}
                   />
                   Chọn tất cả
                 </span>

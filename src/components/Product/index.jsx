@@ -14,7 +14,6 @@ const Produce = () => {
 
   const [listData, setListData] = useState([]);
   const [favorite, setFavorite] = useState([]);
-  console.log("item", favorite);
 
   const ref = useRef();
 
