@@ -47,9 +47,9 @@ const Produce = () => {
             <Col
               span={4}
               key={item.id}
-              // onClick={() => {
-              //   navigate(`/productions/${item.productId}`);
-              // }}
+              onClick={() => {
+                navigate(`/productions/${item.productId}`);
+              }}
               ref={ref}
             >
               <div className={style.infor_laptop}>
