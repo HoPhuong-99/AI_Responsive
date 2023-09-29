@@ -161,7 +161,7 @@ const Narbar = () => {
     }
 
     const fillterSearch = backupDataSearch?.filter((i) =>
-      i?.title?.toLowerCase()?.includes(e?.toLowerCase())
+      i?.productName?.toLowerCase()?.includes(e?.toLowerCase())
     );
     const fillAraySearch = fillterSearch?.slice(0, 5);
     if (fillterSearch.length > 5) {
@@ -295,7 +295,7 @@ const Narbar = () => {
 
   const getDataSearch = async () => {
     const result = await APIService.ListProducts();
-    setBackupDataSearch(result);
+    setBackupDataSearch(result?.data);
   };
 
   useEffect(() => {
@@ -329,7 +329,7 @@ const Narbar = () => {
                 onClick={() => setClickSearch(false)}
                 onBlur={() => setClickSearch(true)}
               />
-              {listSearch && clickSearch === false && (
+              {listSearch && (
                 <div className={style.container_search}>
                   {listData.map((e, key) => (
                     <div
