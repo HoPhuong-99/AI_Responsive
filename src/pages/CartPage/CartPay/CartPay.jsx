@@ -21,15 +21,13 @@ const Cartpay = () => {
   const [selectAll, setSelectAll] = useState(false);
   const [totalNumbItem, setTotalNumbItem] = useState(0);
 
-  console.log(listDataCart);
-
   const [quantities, setQuantities] = useState(
     listDataCart.map((item) => item.quantily)
   );
 
   const updateQuantity = (itemId, newQuantity) => {
     const updatedQuantities = quantities.map((preQuantily, index) =>
-      listDataCart[index].id === itemId ? newQuantity : preQuantily
+      listDataCart[index].productId === itemId ? newQuantity : preQuantily
     );
 
     setQuantities(updatedQuantities);
@@ -44,17 +42,30 @@ const Cartpay = () => {
   };
 
   const deleteItem = (itemId) => {
-    const updateCart = listDataCart.filter((item) => item.id !== itemId);
+    const updateCart = listDataCart.filter((item) => item.productId !== itemId);
     dispatch(itemListCart(updateCart));
   };
 
   const handleCheckbox = (itemId) => {
     if (selectedItems.includes(itemId)) {
-      setSelectedItems(selectedItems.filter((id) => id !== itemId));
-      setTotalNumbItem(totalNumbItem - 1);
+      setSelectedItems((prevSelectedItems) =>
+        prevSelectedItems.filter((id) => id !== itemId)
+      );
+      setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem - 1);
     } else {
-      setSelectedItems([...selectedItems, itemId]);
-      setTotalNumbItem(totalNumbItem + 1);
+      setSelectedItems((prevSelectedItems) => [...prevSelectedItems, itemId]);
+      setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem + 1);
+    }
+  };
+
+  const handleSelectAll = () => {
+    if (!selectAll) {
+      const allProductIds = listDataCart.map((item) => item.productId);
+      setSelectAll(true);
+      setSelectedItems(allProductIds);
+    } else {
+      setSelectAll(false);
+      setSelectedItems([]);
     }
   };
 
@@ -64,23 +75,25 @@ const Cartpay = () => {
   );
 
   useEffect(() => {
-    if (selectAll) {
-      setSelectedItems(listDataCart.map((item) => item.id));
-    } else {
-      setSelectedItems([]);
-    }
-  }, [selectAll]);
-
-  useEffect(() => {
+    // Tạo một bản sao của selectedItems
+    const newSelectedItems = [...selectedItems];
     if (
-      selectedItems.length > 0 &&
-      selectedItems.length === listDataCart.length
+      newSelectedItems.length > 0 &&
+      newSelectedItems.length === listDataCart.length
     ) {
       setSelectAll(true);
     } else {
       setSelectAll(false);
     }
   }, [selectedItems]);
+
+  useEffect(() => {
+    if (selectAll) {
+      setTotalNumbItem(listDataCart.length);
+    } else {
+      setTotalNumbItem(selectedItems.length);
+    }
+  }, [selectAll, selectedItems]);
 
   return (
     <>
@@ -93,7 +106,7 @@ const Cartpay = () => {
                   <p className={style.checkBox_All}>
                     <Checkbox
                       checked={selectAll}
-                      onChange={() => setSelectAll(!selectAll)}
+                      onChange={() => handleSelectAll()}
                     ></Checkbox>
                     Sản phẩm
                   </p>
@@ -118,19 +131,21 @@ const Cartpay = () => {
           </Col>
           <div className={style.hero_pay}>
             {listDataCart?.map((i, index) => (
-              <div className={style.wrap_cartpay} key={i.id}>
+              <div className={style.wrap_cartpay} key={i.productId}>
                 <Col span={22}>
                   <Row>
                     <Col span={12} className={style.product_Name}>
                       <Checkbox
-                        onChange={() => handleCheckbox(i.id)}
-                        checked={selectedItems.includes(i.id)}
+                        onChange={() => handleCheckbox(i.productId)}
+                        checked={selectedItems.includes(i.productId)}
+                        id={i.productId}
+                        key={i.productId}
                       />
                       <div className={style.img_pay}>
                         <img className={style.img_item} src={i?.image} alt="" />
                         <div
                           className={style.delete_pay_item}
-                          onClick={() => deleteItem(i.id)}
+                          onClick={() => deleteItem(i.productId)}
                         >
                           <DeleteOutlined />
                           <span className={style.sub_title_delete}>Delete</span>
@@ -151,7 +166,10 @@ const Cartpay = () => {
                           ) : (
                             <Button
                               onClick={() =>
-                                updateQuantity(i.id, quantities[index] - 1)
+                                updateQuantity(
+                                  i.productId,
+                                  quantities[index] - 1
+                                )
                               }
                             >
                               -
@@ -162,7 +180,9 @@ const Cartpay = () => {
                             value={i.quantily}
                           />
                           <Button
-                            onClick={() => updateQuantity(i.id, i.quantily + 1)}
+                            onClick={() =>
+                              updateQuantity(i.productId, i.quantily + 1)
+                            }
                           >
                             +
                           </Button>
@@ -183,7 +203,7 @@ const Cartpay = () => {
                 <span className={style.checkBox_All}>
                   <Checkbox
                     checked={selectAll}
-                    onChange={() => setSelectAll(!selectAll)}
+                    onChange={() => handleSelectAll()}
                   />
                   Chọn tất cả
                 </span>
