@@ -15,7 +15,8 @@ const Cartpay = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const listDataCart = useSelector((state) => state.cartSlice?.listCart);
-  let allPriceItem = listDataCart.map((items) => items.price * items.quantily);
+  const [cartItem, setCartItem] = useState([]);
+  let allPriceItem = cartItem.map((items) => items.price * items.quantily);
   const [total, setTotal] = useState(null);
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
@@ -46,14 +47,18 @@ const Cartpay = () => {
     dispatch(itemListCart(updateCart));
   };
 
-  const handleCheckbox = (itemId) => {
+  const handleCheckbox = (itemId, item) => {
     if (selectedItems.includes(itemId)) {
       setSelectedItems((prevSelectedItems) =>
         prevSelectedItems.filter((id) => id !== itemId)
       );
+      setCartItem((prevSelectedItems) =>
+        prevSelectedItems.filter((id) => id.productId !== itemId)
+      );
       setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem - 1);
     } else {
       setSelectedItems((prevSelectedItems) => [...prevSelectedItems, itemId]);
+      setCartItem((preItem) => [...preItem, item]);
       setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem + 1);
     }
   };
@@ -94,6 +99,9 @@ const Cartpay = () => {
       setTotalNumbItem(selectedItems.length);
     }
   }, [selectAll, selectedItems]);
+
+  console.log(selectedItems);
+  console.log(cartItem);
 
   return (
     <>
@@ -136,7 +144,7 @@ const Cartpay = () => {
                   <Row>
                     <Col span={12} className={style.product_Name}>
                       <Checkbox
-                        onChange={() => handleCheckbox(i.productId)}
+                        onChange={() => handleCheckbox(i.productId, i)}
                         checked={selectedItems.includes(i.productId)}
                         id={i.productId}
                         key={i.productId}
