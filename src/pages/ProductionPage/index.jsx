@@ -46,8 +46,6 @@ const Productions = () => {
 
   let inforLaptop = listData?.filter((item) => item?.productId === idLaptop);
 
-  console.log(inforLaptop);
-
   let listCart = useSelector((state) => state.cartSlice.listCart);
 
   const fetchData = async () => {
@@ -62,24 +60,24 @@ const Productions = () => {
   }, []);
 
   const handleAddCart = async (item) => {
-    console.log(item);
-    const addItem = listCart.find((prevItem) => prevItem?.id === item?.id);
-    console.log(addItem);
+    const addItem = listCart.find(
+      (prevItem) => prevItem?.productId === item?.productId
+    );
 
-    // try {
-    //   if (addItem) {
-    //     const updatedList = listCart.map((prevItem) =>
-    //       prevItem.id === item.id
-    //         ? { ...prevItem, quantily: prevItem.quantily + count }
-    //         : prevItem
-    //     );
-    //     dispatch(itemListCart(updatedList));
-    //     dispatch(setItemcart(count));
-    //   } else {
-    //     dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
-    //     dispatch(setItemcart(count));
-    //   }
-    // } catch (error) {}
+    try {
+      if (addItem) {
+        const updatedList = listCart.map((prevItem) =>
+          prevItem?.productId === item?.productId
+            ? { ...prevItem, quantily: prevItem.quantily + count }
+            : prevItem
+        );
+        dispatch(itemListCart(updatedList));
+        dispatch(setItemcart(count));
+      } else {
+        dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
+        dispatch(setItemcart(count));
+      }
+    } catch {}
   };
 
   const dataSource = [
@@ -254,7 +252,7 @@ const Productions = () => {
                     className={style.productions_btn_items}
                     type={"primary"}
                     danger
-                    onClick={() => handleAddCart(item.productId)}
+                    onClick={() => handleAddCart(item)}
                   >
                     Add Cart
                   </Button>
