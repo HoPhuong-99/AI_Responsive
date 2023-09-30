@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
 import style from "./style.module.css";
-import { Tree } from "antd";
+import { Col, Tree } from "antd";
 import { useEffect } from "react";
+import InforUser from "../../components/User/InforUser";
+import AddressUser from "../../components/User/AddressUser";
+import Bank from "../../components/User/Bank";
 
 const treeData = [
   {
@@ -41,13 +44,13 @@ const User = () => {
   let selectedComponent;
   switch (keyTree) {
     case "information":
-      selectedComponent = "hika";
+      selectedComponent = <InforUser />;
       break;
     case "address":
-      selectedComponent = "hophuong";
+      selectedComponent = <AddressUser />;
       break;
     case "bank":
-      selectedComponent = "y nhi";
+      selectedComponent = <Bank />;
       break;
     default:
       selectedComponent = null;
@@ -56,14 +59,19 @@ const User = () => {
   return (
     <>
       <div>
-        <Tree
-          showIcon
-          defaultExpandAll
-          defaultSelectedKeys={["information"]}
-          treeData={treeData}
-          onSelect={handleNodeSelect}
-        />
-        {selectedComponent}
+        <Col span={24}>
+          <Col span={10}>
+            <Tree
+              showIcon
+              defaultExpandAll
+              defaultSelectedKeys={["information"]}
+              treeData={treeData}
+              onSelect={handleNodeSelect}
+            />
+          </Col>
+
+          <Col span={14}>{selectedComponent}</Col>
+        </Col>
       </div>
     </>
   );
