@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import style from "./style.module.css";
-import { Col, Tree } from "antd";
+import { Col, Row, Tree } from "antd";
 import { useEffect } from "react";
 import InforUser from "../../components/User/InforUser";
 import AddressUser from "../../components/User/AddressUser";
@@ -60,17 +60,20 @@ const User = () => {
     <>
       <div>
         <Col span={24}>
-          <Col span={10}>
-            <Tree
-              showIcon
-              defaultExpandAll
-              defaultSelectedKeys={["information"]}
-              treeData={treeData}
-              onSelect={handleNodeSelect}
-            />
-          </Col>
-
-          <Col span={14}>{selectedComponent}</Col>
+          <Row gutter={10}>
+            <Col span={10}>
+              <Tree
+                showIcon
+                defaultExpandAll
+                defaultSelectedKeys={["information"]}
+                treeData={treeData}
+                onSelect={handleNodeSelect}
+              />
+            </Col>
+            <Col span={14} className={style.content_Select}>
+              {selectedComponent}
+            </Col>
+          </Row>
         </Col>
       </div>
     </>

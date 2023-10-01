@@ -133,7 +133,6 @@ const Narbar = () => {
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpen(false);
   };
 
