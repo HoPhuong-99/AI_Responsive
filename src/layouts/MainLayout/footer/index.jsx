@@ -28,7 +28,60 @@ const Footer = () => {
           </div>
         </div>
         <div className={style.content_Footer}>
-          
+          <div className={style.wrap_footer}>
+            <div className={style.container}>
+              <div className={style.wrap_left_footer}>
+                <div>Logo</div>
+                <span>Decoration</span>
+                <div className={style.wrap_social}>
+                  <span>social</span>
+                  <span>social</span>
+                  <span>social</span>
+                  <span>social</span>
+                </div>
+              </div>
+              <div className={style.wrap_right_footer}>
+                <ul className={style.wrap_link}>
+                  <li className={style.link_items_fist}>About</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                </ul>
+                <ul className={style.wrap_link}>
+                  <li className={style.link_items_fist}>About</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                </ul>
+                <ul className={style.wrap_link}>
+                  <li className={style.link_items_fist}>About</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                </ul>
+                <ul className={style.wrap_link}>
+                  <li className={style.link_items_fist}>About</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                </ul>
+                <ul className={style.wrap_link}>
+                  <li className={style.link_items_fist}>About</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                  <li className={style.link_items}>About us</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={style.copyright}>
+          <div className={style.copyright_items}>@ 2023 NextIt</div>
         </div>
       </div>
     </>
