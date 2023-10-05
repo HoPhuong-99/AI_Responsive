@@ -9,7 +9,7 @@
   position: sticky;
   z-index: 1;
   top: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .element_narbar p {
@@ -190,5 +190,4 @@
   gap: 10px;
 }
 
-.popup_Login {
-}
+.popup_Login {}

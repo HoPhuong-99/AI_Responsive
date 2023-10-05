@@ -295,6 +295,7 @@ const Narbar = () => {
 
   const getDataSearch = async () => {
     const result = await APIService.ListProducts();
+    console.log("re", result);
     setBackupDataSearch(result?.data);
   };
 
@@ -342,7 +343,9 @@ const Narbar = () => {
                       }}
                     >
                       <div className={style.items_search_left}>
-                        <span className={style.title_search}>{e?.title}</span>
+                        <span className={style.title_search}>
+                          {e?.productName}
+                        </span>
                         <span className={style.price_search}>{e?.price}</span>
                       </div>
                       <div className={style.items_search_right}>

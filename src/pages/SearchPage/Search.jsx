@@ -7,6 +7,7 @@ import style from "./style.module.css";
 const Search = () => {
   const navigate = useNavigate();
   const listDataSearch = useSelector((state) => state?.searchSlice?.listSearch);
+  console.log("líut", listDataSearch);
   const inputDataSearch = useSelector(
     (state) => state?.searchSlice?.inputSearchs
   );
@@ -31,7 +32,7 @@ const Search = () => {
                 <div className={style.img_search}>
                   <img className={style.img_items} src={e?.image} alt="" />
                 </div>
-                <h1 className={style.title_items}>{e?.title}</h1>
+                <h1 className={style.title_items}>{e?.productName}</h1>
                 <span className={style.subtitle}>{e?.price}</span>
               </div>
             ))}

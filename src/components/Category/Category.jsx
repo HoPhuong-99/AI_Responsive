@@ -32,7 +32,7 @@ const Category = () => {
       <Swiper
         slidesPerView={10}
         slidesPerColumn={2}
-        spaceBetween={0}
+        spaceBetween={5}
         navigation={true}
         modules={[Pagination, Navigation]}
       >
