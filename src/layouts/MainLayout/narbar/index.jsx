@@ -133,7 +133,6 @@ const Narbar = () => {
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpen(false);
   };
 
@@ -629,7 +628,7 @@ const Narbar = () => {
                   </Col> */}
           </Col>
 
-          <Col span={6}>
+          <Col span={8}>
             <Row justify={"space-evenly"}>
               <Col span={4}>
                 <NavLink className={style.element_narbar}>

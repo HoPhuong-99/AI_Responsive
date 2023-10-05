@@ -6,7 +6,6 @@ import { APIService } from "../../services/apiService";
 import { useDispatch } from "react-redux";
 import { setItemProductions } from "../../redux/productionsSlice";
 import { HeartOutlined } from "@ant-design/icons";
-import { AiOutlineHeart } from "react-icons/ai";
 
 const Produce = () => {
   const navigate = useNavigate();
@@ -14,7 +13,6 @@ const Produce = () => {
 
   const [listData, setListData] = useState([]);
   const [favorite, setFavorite] = useState([]);
-  console.log("item", favorite);
 
   const ref = useRef();
 
@@ -24,7 +22,6 @@ const Produce = () => {
     try {
       const data = await APIService.ListProducts();
       setListData(data?.data);
-      console.log(data);
     } catch (error) {}
   };
   useEffect(() => {
@@ -62,7 +59,7 @@ const Produce = () => {
                     {item?.productName}
                     <span className={style.price}>{item?.price} $</span>
                   </span>
-                  <AiOutlineHeart
+                  <HeartOutlined
                     className={
                       favorite === item?.productId
                         ? `${style.icon_Favorite} ${style.bgFavotire_Icon}`

@@ -1,14 +1,14 @@
 .hero_pay {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .wrap_cartpay {
-  padding: 20px 0 20px 0;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  padding: 20px 0;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
 }
 
 .img_pay {
@@ -113,14 +113,18 @@
   flex-direction: column;
   gap: 10px;
   padding-top: 20px;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
 }
 
 .wrap_transport {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-items: center;
   font-weight: 600;
   font-size: 16px;
+  align-items: center;
 }
 
 .total {
@@ -128,7 +132,9 @@
   flex-direction: row;
   font-weight: 600;
   justify-content: space-between;
+  align-items: center;
   padding-bottom: 10px;
+  width: 60%;
 }
 
 .sub_total {
@@ -141,12 +147,12 @@
 }
 
 .btn_oder {
-  padding: 30px 16px;
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .cart_emty {
@@ -177,7 +183,18 @@
   justify-content: center;
 }
 
-.product_Name {
+.product_Name,
+.checkBox_All {
   display: flex;
-  gap: 30px;
+  gap: 10px;
+}
+
+.checkBox_All {
+  align-items: center;
+}
+
+.nameTitle_cart {
+  padding: 10px 0;
+  border-bottom: 1px solid;
+  width: 100%;
 }

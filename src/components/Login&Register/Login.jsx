@@ -18,7 +18,16 @@ const Login = (props) => {
   };
 
   const handleLogin = (values) => {
-    setStatusLogin(true);
+    const data = {
+      username: form.getFieldValue("username"),
+      password: form.getFieldValue("password"),
+    };
+
+    if (data) {
+      setStatusLogin(true);
+    } else {
+      setStatusLogin(false);
+    }
   };
 
   const openMessage = () => {
@@ -35,6 +44,7 @@ const Login = (props) => {
           content: "Loaded!",
           duration: 2,
         });
+        navigate("/user");
       } else {
         messageApi.error({
           key,
@@ -121,16 +131,14 @@ const Login = (props) => {
                 span: 12,
               }}
             >
-              {/* <Button
+              <Button
                 type="primary"
                 htmlType="submit"
                 className={style.btn_login}
                 onClick={openMessage}
               >
                 Login
-              </Button> */}
-
-              <Button onClick={() => navigate("/user")}>Login</Button>
+              </Button>
             </Form.Item>
           </Form>
         </div>

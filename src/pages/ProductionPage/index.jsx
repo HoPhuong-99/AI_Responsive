@@ -34,19 +34,17 @@ const columns = [
 ];
 
 const Productions = () => {
-  const getID = localStorage.getItem("idProduct");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const idLaptop = parseInt(id);
   const [listData, setListData] = useState();
-  console.log("list", listData);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const [value, setValue] = useState(3);
   const [count, setCount] = useState(1);
 
-  let inforLaptop = listData?.filter((item) => item?.productId == getID);
+  let inforLaptop = listData?.filter((item) => item?.productId === idLaptop);
 
   let listCart = useSelector((state) => state.cartSlice.listCart);
 
@@ -62,11 +60,14 @@ const Productions = () => {
   }, []);
 
   const handleAddCart = async (item) => {
-    const addItem = listCart.find((prevItem) => prevItem?.id === item?.id);
+    const addItem = listCart.find(
+      (prevItem) => prevItem?.productId === item?.productId
+    );
+
     try {
       if (addItem) {
         const updatedList = listCart.map((prevItem) =>
-          prevItem.id === item.id
+          prevItem?.productId === item?.productId
             ? { ...prevItem, quantily: prevItem.quantily + count }
             : prevItem
         );
@@ -76,9 +77,7 @@ const Productions = () => {
         dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
         dispatch(setItemcart(count));
       }
-    } catch (error) {
-      console.error("Lỗi xảy ra khi thêm vào giỏ hàng:", error);
-    }
+    } catch {}
   };
 
   const dataSource = [

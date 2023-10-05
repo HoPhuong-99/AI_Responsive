@@ -1,7 +1,10 @@
 .container_pay {
-  margin: auto;
-  border: 1px solid;
-  border-radius: 20px;
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrap_btn {

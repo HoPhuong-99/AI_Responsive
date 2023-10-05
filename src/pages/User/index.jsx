@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import style from "./style.module.css";
-import { Tree } from "antd";
+import { Col, Row, Tree } from "antd";
+import { useEffect } from "react";
+import InforUser from "../../components/User/InforUser";
+import AddressUser from "../../components/User/AddressUser";
+import Bank from "../../components/User/Bank";
 
 const treeData = [
   {
@@ -11,31 +15,67 @@ const treeData = [
       {
         title: "Hồ sơ",
         key: "information",
-        onclick: () => console.log(1),
       },
       {
         title: "Địa chỉ",
         key: "address",
-        onclick: () => console.log(2),
       },
       {
         title: "Liên kết ngân hàng",
         key: "bank",
-        onclick: () => console.log(3),
       },
     ],
   },
 ];
 
 const User = () => {
+  const [keyTree, setKeyTree] = useState("information");
+
+  const handleNodeSelect = (selectedKeys, info) => {
+    if (info !== "") {
+      setKeyTree(info.node.key);
+    }
+  };
+
+  useEffect(() => {
+    console.log(keyTree);
+  }, [keyTree]);
+
+  let selectedComponent;
+  switch (keyTree) {
+    case "information":
+      selectedComponent = <InforUser />;
+      break;
+    case "address":
+      selectedComponent = <AddressUser />;
+      break;
+    case "bank":
+      selectedComponent = <Bank />;
+      break;
+    default:
+      selectedComponent = null;
+  }
+
   return (
     <>
-      <Tree
-        showIcon
-        defaultExpandAll
-        defaultSelectedKeys={["information"]}
-        treeData={treeData}
-      />
+      <div>
+        <Col span={24}>
+          <Row gutter={10}>
+            <Col span={10}>
+              <Tree
+                showIcon
+                defaultExpandAll
+                defaultSelectedKeys={["information"]}
+                treeData={treeData}
+                onSelect={handleNodeSelect}
+              />
+            </Col>
+            <Col span={14} className={style.content_Select}>
+              {selectedComponent}
+            </Col>
+          </Row>
+        </Col>
+      </div>
     </>
   );
 };
