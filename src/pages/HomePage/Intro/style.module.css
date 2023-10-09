@@ -3,3 +3,10 @@
   display: flex;
   justify-content: center;
 }
+
+.wrap_intro_home {
+  display: flex;
+  padding: 5px;
+  background: white;
+  border-radius: 10px;
+}

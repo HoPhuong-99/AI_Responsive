@@ -29,24 +29,18 @@ const Category = () => {
   return (
     <div className={style.wrap_category}>
       <h1 className={style.title_category}>Danh mục</h1>
-      <Swiper
-        slidesPerView={10}
-        slidesPerColumn={2}
-        spaceBetween={0}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-      >
+      <div className={style.content_Category}>
         {listCategory?.map((e, key) => (
-          <SwiperSlide
+          <div
             className={style.containerBanner}
             onClick={() => navigates("/production")}
             key={key}
           >
             <img className={style.img_category} src={pc} alt="" />
             <div className={style.sub_title_category}>{e?.categoryName}</div>
-          </SwiperSlide>
+          </div>
         ))}
-      </Swiper>
+      </div>
     </div>
   );
 };

@@ -13,4 +13,8 @@ export const APIService = {
     let uri = "/service";
     return https.get(uri);
   },
+  RegisterUSer: (data) => {
+    let uri = "/user/register";
+    return https.post(uri, data);
+  },
 };

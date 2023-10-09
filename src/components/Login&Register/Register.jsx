@@ -3,34 +3,31 @@ import { Button, Checkbox, Form, Input } from "antd";
 
 import style from "./style.module.css";
 import { useForm } from "antd/es/form/Form";
+import { APIService } from "../../services/apiService";
 
 const Register = (props) => {
   const { setCheckRegister } = props;
   const [form] = Form.useForm();
 
   const Register = (values) => {
-    console.log("Success:", values);
+    APIService.RegisterUSer({
+      name: form.getFieldValue("nickname"),
+      email: form.getFieldValue("email"),
+      password: form.getFieldValue("password"),
+      roleId: 1,
+    })
+      .then((response) => {
+        console.log(response.status);
+        if (response.status === 200) {
+          alert("Successfully");
+        }
+      })
+      .catch((error) => {
+        alert("The email has already been taken");
+      });
   };
   const RegisterFail = (errorInfo) => {
     console.log("Failed:", errorInfo);
-  };
-
-  const handleRegister = () => {
-    const email = form.getFieldValue("email");
-    const password = form.getFieldValue("password");
-    const confirm = form.getFieldValue("confirm");
-    const nickname = form.getFieldValue("nickname");
-    const phone = form.getFieldValue("phone");
-    const address = form.getFieldValue("address");
-
-    const data = {
-      email: email,
-      password: password,
-      confirm: confirm,
-      nickname: nickname,
-      phone: phone,
-      address: address,
-    };
   };
 
   return (
@@ -148,7 +145,6 @@ const Register = (props) => {
                 type="primary"
                 htmlType="submit"
                 className={style.btn_login}
-                onClick={handleRegister()}
               >
                 Register
               </Button>
