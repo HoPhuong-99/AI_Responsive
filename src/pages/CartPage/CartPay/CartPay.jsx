@@ -17,13 +17,14 @@ const Cartpay = () => {
   const listDataCart = useSelector((state) => state.cartSlice?.listCart);
   const [cartItem, setCartItem] = useState([]);
   let allPriceItem =
-    cartItem.length > 0
+    cartItem?.length > 0
       ? cartItem.map((items) => items.price * items.quantily)
       : 0;
   let total = 0;
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [totalNumbItem, setTotalNumbItem] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const [quantities, setQuantities] = useState(
     listDataCart.map((item) => item.quantily)
@@ -58,13 +59,32 @@ const Cartpay = () => {
       setCartItem((prevSelectedItems) =>
         prevSelectedItems.filter((id) => id.productId !== itemId)
       );
-      setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem - 1);
+      // setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem - 1);
     } else {
       setSelectedItems((prevSelectedItems) => [...prevSelectedItems, itemId]);
       setCartItem((preItem) => [...preItem, item]);
-      setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem + 1);
+      // setTotalNumbItem((prevTotalNumbItem) => prevTotalNumbItem + 1);
     }
   };
+  useEffect(() => {
+    // Tính toán lại tổng số lượng sản phẩm đã chọn
+    const newTotalNumbItem = selectedItems.length;
+
+    // Tính toán lại tổng giá trị của các sản phẩm đã chọn
+    const newTotalPrice = selectedItems.reduce((accumulator, itemId) => {
+      const item = listDataCart.find(
+        (cartItem) => cartItem.productId === itemId
+      );
+      if (item) {
+        return accumulator + item.price * item.quantily;
+      }
+      return accumulator;
+    }, 0);
+
+    // Cập nhật giá trị mới cho totalNumbItem và totalPrice
+    setTotalNumbItem(newTotalNumbItem);
+    setTotalPrice(newTotalPrice);
+  }, [selectedItems, listDataCart]);
 
   const handleSelectAll = (item) => {
     if (!selectAll) {
@@ -79,21 +99,21 @@ const Cartpay = () => {
     }
   };
 
-  const totalPrice =
-    cartItem.length > 0
-      ? allPriceItem.reduce(
-          (accumulator, currentValue) => accumulator + currentValue,
-          total
-        )
-      : 0;
+  // const totalPrice =
+  //   cartItem?.length > 0
+  //     ? allPriceItem.reduce(
+  //         (accumulator, currentValue) => accumulator + currentValue,
+  //         total
+  //       )
+  //     : 0;
 
-  console.log(total);
+  // console.log(total);
 
   useEffect(() => {
     const newSelectedItems = [...selectedItems];
     if (
-      newSelectedItems.length > 0 &&
-      newSelectedItems.length === listDataCart.length
+      newSelectedItems?.length > 0 &&
+      newSelectedItems?.length === listDataCart?.length
     ) {
       setSelectAll(true);
     } else {
@@ -103,15 +123,15 @@ const Cartpay = () => {
 
   useEffect(() => {
     if (selectAll) {
-      setTotalNumbItem(listDataCart.length);
+      setTotalNumbItem(listDataCart?.length);
     } else {
-      setTotalNumbItem(selectedItems.length);
+      setTotalNumbItem(selectedItems?.length);
     }
   }, [selectAll, selectedItems]);
 
   return (
     <>
-      {listDataCart.length > 0 ? (
+      {listDataCart?.length > 0 ? (
         <>
           <Col span={22} className={style.nameTitle_cart}>
             <Row>
