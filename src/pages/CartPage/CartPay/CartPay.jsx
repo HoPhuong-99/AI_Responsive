@@ -67,10 +67,8 @@ const Cartpay = () => {
     }
   };
   useEffect(() => {
-    // Tính toán lại tổng số lượng sản phẩm đã chọn
     const newTotalNumbItem = selectedItems.length;
 
-    // Tính toán lại tổng giá trị của các sản phẩm đã chọn
     const newTotalPrice = selectedItems.reduce((accumulator, itemId) => {
       const item = listDataCart.find(
         (cartItem) => cartItem.productId === itemId
@@ -81,7 +79,6 @@ const Cartpay = () => {
       return accumulator;
     }, 0);
 
-    // Cập nhật giá trị mới cho totalNumbItem và totalPrice
     setTotalNumbItem(newTotalNumbItem);
     setTotalPrice(newTotalPrice);
   }, [selectedItems, listDataCart]);
