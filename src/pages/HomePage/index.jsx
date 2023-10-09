@@ -26,12 +26,7 @@ const HomePage = () => {
   return (
     <div className={style.container}>
       <IntroHome />
-      <div className={style.listItem}>
-        <Category />
-        <p onClick={() => navigate(`/collections`)} className={style.seeAll}>
-          Show All
-        </p>
-      </div>
+      <Category />
       <CustomerService />
     </div>
   );

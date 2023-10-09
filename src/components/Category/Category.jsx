@@ -36,16 +36,18 @@ const Category = () => {
         navigation={true}
         modules={[Pagination, Navigation]}
       >
-        {listCategory?.map((e, key) => (
-          <SwiperSlide
-            className={style.containerBanner}
-            onClick={() => navigates("/production")}
-            key={key}
-          >
-            <img className={style.img_category} src={pc} alt="" />
-            <div className={style.sub_title_category}>{e?.categoryName}</div>
-          </SwiperSlide>
-        ))}
+        <div className={style.content_Category}>
+          {listCategory?.map((e, key) => (
+            <div
+              className={style.containerBanner}
+              onClick={() => navigates("/production")}
+              key={key}
+            >
+              <img className={style.img_category} src={pc} alt="" />
+              <div className={style.sub_title_category}>{e?.categoryName}</div>
+            </div>
+          ))}
+        </div>
       </Swiper>
     </div>
   );

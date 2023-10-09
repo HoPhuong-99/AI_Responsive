@@ -72,10 +72,9 @@ const Productions = () => {
             : prevItem
         );
         dispatch(itemListCart(updatedList));
-        dispatch(setItemcart(count));
       } else {
         dispatch(itemListCart([...listCart, { ...item, quantily: count }]));
-        dispatch(setItemcart(count));
+        dispatch(setItemcart());
       }
     } catch {}
   };

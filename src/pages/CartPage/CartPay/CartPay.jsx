@@ -16,8 +16,11 @@ const Cartpay = () => {
   const dispatch = useDispatch();
   const listDataCart = useSelector((state) => state.cartSlice?.listCart);
   const [cartItem, setCartItem] = useState([]);
-  let allPriceItem = cartItem.map((items) => items.price * items.quantily);
-  const [total, setTotal] = useState(null);
+  let allPriceItem =
+    cartItem.length > 0
+      ? cartItem.map((items) => items.price * items.quantily)
+      : 0;
+  let total = 0;
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [totalNumbItem, setTotalNumbItem] = useState(0);
@@ -76,10 +79,15 @@ const Cartpay = () => {
     }
   };
 
-  const totalPrice = allPriceItem.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    total
-  );
+  const totalPrice =
+    cartItem.length > 0
+      ? allPriceItem.reduce(
+          (accumulator, currentValue) => accumulator + currentValue,
+          total
+        )
+      : 0;
+
+  console.log(total);
 
   useEffect(() => {
     const newSelectedItems = [...selectedItems];
@@ -240,8 +248,8 @@ const Cartpay = () => {
           <span className={style.sub_emty}>Giỏ hàng của bạn đang trống</span>
           <Button
             className={style.btn_emty}
-            onClick={() => navigate(`/payment`)}
-            // onClick={() => navigate(`/`)}
+            onClick={() => navigate(`/`)}
+            type="dashed"
           >
             Tiếp tục mua hàng
           </Button>
